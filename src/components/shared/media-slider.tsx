@@ -18,7 +18,7 @@ const MediaSlider = ({
   const mediaData = media as TrendingApiResponse
   return ( 
     <>
-    <div className="p-10">
+    <div className="p-6 sm:p-10">
         <h2 className="pb-6 uppercase text-[1.4rem] font-bold">{title}</h2>
         <div className="movie-grid">
           <Swiper

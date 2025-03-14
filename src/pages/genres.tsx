@@ -1,12 +1,12 @@
-import GenreListComponent from "@/components/genre-list";
+// import GenreListComponent from "@/components/genre-list";
 // import { Button } from "@/components/ui/button";
-import { useGetAllMovieGenresQuery, useGetAllTvGenresQuery } from "@/services/api/general-api-slice";
+// import { useGetAllMovieGenresQuery, useGetAllTvGenresQuery } from "@/services/api/general-api-slice";
 // import { Link } from "react-router-dom";
 
 const Genres = () => {
-  const { data: movieGenres } = useGetAllMovieGenresQuery();
-  const {data: tvGenres} = useGetAllTvGenresQuery()
-  console.log(movieGenres);
+  // const { data: movieGenres } = useGetAllMovieGenresQuery();
+  // const {data: tvGenres} = useGetAllTvGenresQuery()
+  // console.log(movieGenres);
   return (
     <div className="px-10">
       <div className="movies-page-header h-[25vh] bg-[linear-gradient(rgba(18,18,18,0.8),rgb(18,18,18)),url('/assets/bg.jpg')] bg-cover bg-no-repeat bg-bottom flex items-center justify-center">
@@ -16,8 +16,8 @@ const Genres = () => {
       </div>
 
       <div className="grid">
-        <GenreListComponent MovieGenreList={movieGenres || []}/>
-        <GenreListComponent TvGenreList={tvGenres || []}/>
+        {/* <GenreListComponent MovieGenreList={movieGenres || []}/>
+        <GenreListComponent TvGenreList={tvGenres || []}/> */}
 
       </div>
 

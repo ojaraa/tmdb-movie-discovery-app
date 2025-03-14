@@ -27,14 +27,14 @@ const Popular = () => {
     <div>
       <Swiper
         modules={[Navigation, Autoplay]}
-        autoplay={{ delay: 5000 }}
+        autoplay={{ delay: 90000 }}
         loop={true}
         slidesPerView={1}
       >
         {trendingMedia?.results.map((movie) => (
           <SwiperSlide key={movie.id}>
             <div
-              className="w-full h-full pt-[5rem] pl-12"
+              className="w-full h-full  pl-[2rem]  pt-[12rem] sm:pt-[5rem] sm:pl-12 "
               style={{
                 background: ` linear-gradient(90deg,rgba(0,0,0,.9) 10%,transparent 90%),linear-gradient(1turn,rgba(0,0,0,.9),transparent 50%),url(${
                   API_IMG + movie.backdrop_path
@@ -53,12 +53,12 @@ const Popular = () => {
               </div>
 
               <Link to={`movie/${movie?.id}`}>
-                <h1 className="pb-8 text-[3.5rem] mb-2 font-bold">
+                <h1 className="sm:pb-8 text-[2.5rem] sm:text-[3.5rem] mb-2 font-bold">
                   {movie?.name} {movie?.title}
                 </h1>
               </Link>
 
-              <p className="w-[55%]">{truncateString(movie?.overview, 180)}</p>
+              <p className="w-full sm:w-[55%]">{truncateString(movie?.overview, 180)}</p>
               {movie.release_date && (
                 <p className="mt-8 font-bold ">
                   Release Date: {movie?.release_date}
