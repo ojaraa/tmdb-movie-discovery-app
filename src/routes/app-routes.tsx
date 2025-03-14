@@ -18,25 +18,25 @@ const AppRoutes = () => {
   const router = createBrowserRouter([
     {
       path: "",
-      element: <Layout/>,
+      element: <Layout />,
       children: [
-        {path: '', element: <Landing/>},
+        { path: "", element: <Landing /> },
         { path: "movies", element: <Movies /> },
         { path: "tv", element: <Series /> },
         { path: "movie/:movie_id", element: <MovieDetails /> },
         { path: "tv/:series_id", element: <TvSeriesDetails /> },
         { path: "tv/all-seasons/:series_id", element: <AllSeasons /> },
         { path: "person/:person_id", element: <ActorDetails /> },
-        { path: ":mediaType/:movie_id/full-cast-crew", element: <FullCreditsList /> },
+        {
+          path: ":mediaType/:movie_id/full-cast-crew",
+          element: <FullCreditsList />,
+        },
         { path: "movie/:movie_id/all-videos", element: <AllVideos /> },
         { path: "collection/:collection_id", element: <CollectionDetails /> },
         { path: "tv/season/:series_id/:season_id", element: <SeasonDetails /> },
         { path: "genres", element: <Genres /> },
         { path: "search", element: <Search /> },
-
-
-        
-    ],
+      ],
     },
   ]);
   return <RouterProvider router={router} />;

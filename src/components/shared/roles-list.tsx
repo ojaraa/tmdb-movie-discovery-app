@@ -21,12 +21,12 @@ const RolesList = ({ title, roles, type, mediaType }: RoleListProps) => {
   return (
     <div>
       <h2 className="pb-6 uppercase text-[1.8rem] font-bold">{title}</h2>
-      <div className="grid grid-cols-2 gap-10  ">
+      <div className="grid sm:grid-cols-2 gap-10  ">
         {roles?.slice(0, movieCount).map((role) => {
           return (
             <Link to={`/${mediaType}/${role?.id}`}>
-              <div className=" grid grid-cols-[1fr_2.5fr] cursor-pointer p-8 gap-6 bg-[#171717] rounded-[15px]">
-                <div className="h-[180px]  rounded-[9px] ">
+              <div className=" grid sm:grid-cols-[1fr_2.5fr] place-items-center sm:place-items-start cursor-pointer py-8 px-5 sm:p-8 gap-6 bg-[#171717] rounded-[15px]">
+                <div className="h-[180px] rounded-[9px] w-[180px] ">
                   <img
                     src={
                       role?.poster_path
@@ -38,16 +38,9 @@ const RolesList = ({ title, roles, type, mediaType }: RoleListProps) => {
                   />
                 </div>
 
-                <div className="grid gap-y-2">
-                  {/* <h2 className="font-bold text-[1.4rem] gap-2">
-                    {role?.original_title ||
-                      role?.name ||
-                      role?.original_name ||
-                      role?.title}
-                  {role?.release_date && `(${format(role?.release_date, "yyyy")})`}
-                  </h2> */}
-
-                  <h2 className="font-bold text-[1.4rem] gap-2">
+                <div className="grid gap-y-2 place-items-center sm:place-items-start">
+              
+                  <h2 className="font-bold text-lg sm:text-[1.4rem] gap-2">
                     {`${
                       role?.original_title ||
                       role?.name ||
@@ -69,7 +62,7 @@ const RolesList = ({ title, roles, type, mediaType }: RoleListProps) => {
                     {/* <p className=""></p> */}
                   </div>
                   {role?.overview ? (
-                    <p className="text-base leading-7">
+                    <p className="text-sm leading-7 text-center sm:text-left sm:text-base">
                       {role?.overview.slice(0, 250)}...
                     </p>
                   ) : (

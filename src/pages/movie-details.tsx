@@ -35,7 +35,7 @@ const MovieDetails = () => {
       ></div>
       <div className="mt-[-28rem] px-5 sm:mx-[8rem] mb-[2rem]">
         <div className="flex gap-[4rem]">
-          <div className="h-[400px] w-[30%] sm:visible hidden">
+          <div className="h-[400px] w-[30%] hidden md:block">
             <img
               src={
                 movieDetail?.poster_path

@@ -28,9 +28,9 @@ const ActorDetails = () => {
   const genderImg = actorDetail?.gender === 1 ? female : male;
 
   return (
-    <div className=" grid gap-y-16  mx-[6rem] pb-10">
-      <div className="grid grid-cols-[1fr_3fr] bg-[#171717] p-10 gap-16 mt-16 rounded-2xl">
-        <div className="h-[360px] w-[280px]">
+    <div className=" grid gap-y-16 mx-6 sm:mx-[6rem] pb-10">
+      <div className="grid sm:grid-cols-[1fr_3fr] sm:bg-[#171717] p-4 sm:p-10 gap-16 mt-16 rounded-2xl">
+        <div className="h-[360px] sm:w-[280px]">
           <img
             src={
               actorDetail?.profile_path
@@ -135,7 +135,7 @@ const ActorDetails = () => {
                 <div className="social-link"></div>
               </div>
             </div>
-            <div className="flex gap-12">
+            <div className="sm:flex grid grid-cols-2 gap-12 gap-y-6">
               {actorDetail?.known_for_department && (
                 <div>
                   <h6 className="text-xl mb-1 font-semibold">Role</h6>

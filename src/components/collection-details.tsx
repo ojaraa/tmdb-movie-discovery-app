@@ -21,14 +21,14 @@ const CollectionDetails = () => {
           })`,
         }}
       >
-        <h2 className=" text-center text-[4.5rem] font-bold">
+        <h2 className=" text-center text-[2.5rem] sm:text-[4.5rem] font-bold">
           {collectionData?.name}
         </h2>
-        <div className="grid items-center gap-10 py-[4rem] px-[8rem] grid-cols-4">
+        <div className="grid items-center gap-4 sm:gap-10 py-[4rem] sm:px-[8rem] px-6 grid-cols-2 sm:grid-cols-4">
             {collectionData?.parts?.map((movie) => (
                 <Link to={`/movie/${movie.id}`}>
                 <div className="relative" key={movie.id}>
-                  <div className="h-[320px] w-full">
+                  <div className=" h-[250px] sm:h-[320px] w-full">
                     <img
                       src={
                         movie?.poster_path

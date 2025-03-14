@@ -36,9 +36,9 @@ const TvSeriesDetails = () => {
         }}
       ></div>
 
-      <div className="mt-[-28rem] mx-[8rem] mb-[2rem]">
+      <div className="mt-[-28rem] sm:mx-[8rem] px-5 mb-[2rem]">
         <div className="flex gap-[4rem]">
-          <div className="h-[400px] w-[30%]">
+          <div className="h-[400px] w-[30%] hidden md:block">
             <img
               src={
                 seriesDetail?.poster_path
@@ -50,8 +50,8 @@ const TvSeriesDetails = () => {
             />
           </div>
 
-          <div className="w-[70%] mt-[6rem] ">
-            <h2 className="text-[4rem] mb-[0rem] font-bold leading-[50px]">
+          <div className="sm:w-[70%] mt-[6rem] ">
+            <h2 className="text-[2.5rem] sm:text-[4rem] mb-[0rem] font-bold sm:leading-[50px]">
               {seriesDetail?.original_name || seriesDetail?.name}{" "}
               {seriesDetail?.first_air_date && (
                 <span>({seriesDetail?.first_air_date.slice(0, 4)})</span>
@@ -118,7 +118,7 @@ const TvSeriesDetails = () => {
         </div>
       </div>
 
-      <div className="px-[5rem] ">
+      <div className="px-5 sm:px-[5rem] ">
         <CastList cast={seriesDetail?.credits.cast || []} />
 
         {seriesDetail?.last_episode_to_air &&

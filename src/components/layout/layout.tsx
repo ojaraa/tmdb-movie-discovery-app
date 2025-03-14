@@ -1,19 +1,42 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "../ui/sidebar";
 import AppSidebar from "./app-sidebar";
+import { useEffect, useRef } from "react";
 
 const Layout = () => {
+  const { pathname } = useLocation();
+
+  // useEffect(() => {
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // }, [pathname]);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     window.scrollTo({ top: 0, behavior: "auto" });
+  //   }, 1000);
+  // }, [pathname]);
+
+  // const contentRef = useRef(null);
+  const contentRef = useRef<HTMLDivElement | null>(null); 
+
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTo({ top: 0, behavior: "auto" }); 
+    }
+  }, [pathname]);
+  
   return (
     <div>
       <SidebarProvider>
         <AppSidebar />
-        <main className="flex flex-col h-screen overflow-auto w-full relative ">
-          <SidebarTrigger  className="absolute left-5 top-5 "/>
+        <main className="flex flex-col h-screen w-full relative overflow-auto "  ref={contentRef} >
+          <SidebarTrigger className="absolute left-5 top-5 " />
           <div className="">
             <Outlet />
           </div>
         </main>
       </SidebarProvider>
+      {/* <Outlet /> */}
     </div>
   );
 };

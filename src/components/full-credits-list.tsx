@@ -25,7 +25,7 @@ const FullCreditsList = () => {
           {creditDetail?.original_title} - Cast & Crew
         </h2>
       </div>
-      <div className=" mx-[8rem] grid grid-cols-2 gap-10 py-10 ">
+      <div className="px-6 sm:mx-[8rem] grid sm:grid-cols-2 gap-10 py-10 ">
         <FullCastAndCrew
           title="Cast"
           type="cast"

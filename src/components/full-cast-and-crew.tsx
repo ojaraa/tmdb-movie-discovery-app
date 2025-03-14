@@ -29,7 +29,7 @@ const FullCastAndCrew = ({ title, type, credits }: CreditsProps) => {
           const genderImg = role?.gender === 1 ? female : male;
           return (
             <Link to={`/person/${role?.id}`}>
-              <div className=" grid grid-cols-[1fr_2.5fr] cursor-pointer gap-6 bg-[#171717] rounded-[15px]">
+              <div className=" grid grid-cols-[1.5fr_2.5fr]  sm:grid-cols-[1fr_2.5fr] cursor-pointer gap-4 sm:gap-6 bg-[#171717] rounded-[15px]">
                 <div className="h-[150px] rounded-[9px] ">
                   <img
                     src={

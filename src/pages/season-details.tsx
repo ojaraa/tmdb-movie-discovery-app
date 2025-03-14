@@ -38,7 +38,7 @@ const SeasonDetails = () => {
           })`,
         }}
       >
-        <h2 className=" text-center mt-12 text-[3rem] font-bold">
+        <h2 className=" text-center mt-12 text-[2rem] sm:text-[3rem] font-bold">
           {seasonsDetail?.name || seasonsDetail?.name} -{" "}
           {episodesDetail?.season_number === 0
             ? `Specials`
@@ -46,15 +46,15 @@ const SeasonDetails = () => {
         </h2>
       </div>
 
-      <div className="mx-[8rem] grid gap-10 py-10">
+      <div className=" p-6 sm:mx-[8rem] grid gap-10 py-10">
         <div className="flex justify-end">
           <p className="">
             Total episodes : {episodesDetail?.episodes?.length}
           </p>
         </div>
         {episodesDetail?.episodes?.map((episode) => (
-          <div className="bg-[#171717] p-12 rounded-[15px]" key={episode?.id}>
-            <div className="grid grid-cols-[1fr_3fr] gap-x-6">
+          <div className="bg-[#171717]  p-6 sm:p-12 rounded-[15px]" key={episode?.id}>
+            <div className="grid sm:grid-cols-[1fr_3fr] gap-x-6">
               <div className="h-[180px]">
                 <img
                   src={
@@ -92,7 +92,7 @@ const SeasonDetails = () => {
                   Guest stars ({episode?.guest_stars?.length})
                 </p>
 
-                <div className="grid grid-cols-2 gap-y-8  gap-x-24 ">
+                <div className="grid sm:grid-cols-2 gap-y-8  gap-x-24 ">
                   {episode?.guest_stars.slice(0, movieCount).map((guest) => {
                     const genderImg = guest?.gender === 1 ? female : male;
 

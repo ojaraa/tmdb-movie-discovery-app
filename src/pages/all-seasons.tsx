@@ -1,6 +1,7 @@
 import { fallbackBgImage, fallbackPoster } from "@/lib/utils";
 import { useGetSeriesDetailsQuery } from "@/services/api/tv-api-slice";
 import { API_IMG, API_IMG_500 } from "@/services/models/general.model";
+import { format } from "date-fns";
 import { Link, useParams } from "react-router-dom";
 
 const AllSeasons = () => {
@@ -20,12 +21,12 @@ const AllSeasons = () => {
           })`,
         }}
       >
-        <h2 className=" text-center mt-12 text-[3rem] font-bold">
+        <h2 className=" text-center mt-12 text-[2rem] sm:text-[3rem] font-bold">
           {seasonDetail?.original_name || seasonDetail?.name} - All Seasons
         </h2>
       </div>
 
-      <div className="mx-[8rem] grid grid-cols-2 gap-10 py-10">
+      <div className="px-6 sm:mx-[8rem] grid sm:grid-cols-2 gap-6 sm:gap-10 py-10">
         {seasonDetail?.seasons?.map((season) => (
           <Link to={`/tv/season/${series_id}/${season?.season_number}`}>
             <div className=" grid grid-cols-[1fr_2.5fr] cursor-pointer gap-2 bg-[#171717] rounded-[15px]">
@@ -48,8 +49,11 @@ const AllSeasons = () => {
                   {season?.overview.slice(0, 250) || "No Overview Available"}..
                 </p>
 
-                <div className=" flex items-center gap-x-6">
-                  <p className=""> Air Date : {season?.air_date}</p>
+                <div className=" flex flex-col sm:flex-row items-start sm:items-center gap-x-6 gap-y-2">
+                  {season?.air_date &&
+                     <p className=""> Air Date : {format(season?.air_date, "MMMM d, yyyy")}</p>
+                  }
+               
                   Total Episodes : {season?.episode_count}
                   <p className=""> </p>{" "}
                 </div>

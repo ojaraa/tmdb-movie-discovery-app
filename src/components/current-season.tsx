@@ -18,8 +18,8 @@ const CurrentSeason = ({ currentSeason }: SeasonProps) => {
       </div>
 
       {/* <Link to={`/${mediaType}/${ currentSeason?.id}`}> */}
-      <div className=" grid grid-cols-[1fr_5fr] cursor-pointer p-5 gap-6 bg-[#171717] rounded-[15px]">
-        <div className="h-[150px]  rounded-[9px] ">
+      <div className=" grid place-items-center sm:place-items-start sm:grid-cols-[1fr_5fr] cursor-pointer p-5 gap-6 bg-[#171717] rounded-[15px]">
+        <div className="h-[150px] sm:h-full  sm:[w-180px] rounded-[9px] w-[150px] sm:w-full">
           <img
             src={
               currentSeason?.still_path
@@ -31,12 +31,12 @@ const CurrentSeason = ({ currentSeason }: SeasonProps) => {
           />
         </div>
 
-        <div className="flex flex-col gap-y-4">
+        <div className="flex flex-col gap-y-4 items-center sm:items-start">
           <h2 className="font-semibold text-[1.4rem] ">
             Season {currentSeason?.season_number} - ({currentSeason?.name})
           </h2>
 
-          <p className="text-base leading-7">{currentSeason?.overview}</p>
+          <p className="text-base leading-7 text-center sm:text-left">{currentSeason?.overview}</p>
 
           {currentSeason?.air_date && (
             <p className=" ">
