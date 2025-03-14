@@ -10,7 +10,7 @@ const RelatedVideos = ({ videos }: VideoProps) => {
   return (
     <div className="py-8">
       <h2  className="pb-6 uppercase text-[2.5rem] font-bold"> related Videos</h2>
-      <div className="grid  grid-cols-3 gap-y-8 gap-x-8 ">
+      <div className="grid  grid-cols-2 gap-x-4 sm:grid-cols-3 gap-y-8 sm:gap-x-8 ">
         {videos.slice(0, 6).map((video) => (
           <div className="video" key={video.id}>
             <iframe

@@ -33,9 +33,9 @@ const MovieDetails = () => {
           })`,
         }}
       ></div>
-      <div className="mt-[-28rem] mx-[8rem] mb-[2rem]">
+      <div className="mt-[-28rem] px-5 sm:mx-[8rem] mb-[2rem]">
         <div className="flex gap-[4rem]">
-          <div className="h-[400px] w-[30%]">
+          <div className="h-[400px] w-[30%] sm:visible hidden">
             <img
               src={
                 movieDetail?.poster_path
@@ -47,8 +47,8 @@ const MovieDetails = () => {
             />
           </div>
 
-          <div className="w-[70%] mt-[6rem] ">
-            <h2 className="text-[4rem] mb-[1rem] font-bold">
+          <div className="sm:w-[70%] mt-[6rem] ">
+            <h2 className="text-[2.6rem] sm:text-[4rem] mb-[1rem] font-bold">
               {movieDetail?.title}{" "}
               {movieDetail?.release_date && (
                 <span>({movieDetail?.release_date.slice(0, 4)})</span>
@@ -103,7 +103,7 @@ const MovieDetails = () => {
         </div>
       </div>
 
-      <div className="px-[5rem] ">
+      <div className="px-5 sm:px-[5rem] ">
         <CastList cast={movieDetail?.credits.cast || []} />
 
         <OtherInformation

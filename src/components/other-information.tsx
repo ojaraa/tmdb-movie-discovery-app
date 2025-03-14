@@ -35,7 +35,7 @@ const OtherInformation = ({
         Other Information
       </h2>
 
-      <div className="grid grid-cols-2 items-center order-0">
+      <div className="grid  sm:grid-cols-2 items-center order-0">
         <div className="grid gap-y-6">
           {/* {info ? <h6 className="text-[1.8rem]  font-bold">Social Links</h6> : ""} */}
 
@@ -115,7 +115,7 @@ const OtherInformation = ({
             )}
           </div>
         </div>
-        <div className="flex gap-16">
+        <div className="flex gap-16 flex-wrap">
           {language?.length > 0 && (
             <div className="flex flex-col gap-y-2">
               <h6 className="text-[1.8rem]  font-bold">Spoken Languages</h6>
