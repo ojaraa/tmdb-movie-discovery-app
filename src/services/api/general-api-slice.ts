@@ -1,5 +1,5 @@
-import { TrendingApiResponse } from "../models/general.model";
-import { ActorDetails, GenreList, MovieCollection } from "../models/movie.model";
+import { PaginatedMediaResponse, TrendingApiResponse } from "../models/general.model";
+import { ActorDetails, GenreList, MovieCollection, MovieResponse } from "../models/movie.model";
 import { apiSlice } from "./apiSlice";
 
 const generalApiSlice = apiSlice.injectEndpoints({
@@ -35,6 +35,23 @@ const generalApiSlice = apiSlice.injectEndpoints({
         method: "GET"
       }) 
     }),
+    getGenreDetails: builder.query<MovieResponse, {genre_id: string;}>({
+      query: ({genre_id}) => ({
+        url:`/discover/movie?language=en-US&sort_by=popularity.desc&with_genres=${genre_id}&with_watch_monetization_types=flatrate&include_adult=false`,
+        method: 'GET'
+      })
+    }),
+    getTvGenreDetails: builder.query<MovieResponse, {genre_id: string;}>({
+      query: ({genre_id}) => ({
+        url:`/discover/tv?language=en-US&sort_by=popularity.desc&with_genres=${genre_id}&with_watch_monetization_types=flatrate&include_adult=false`,
+        method: 'GET'
+      })
+    }),
+    searchForMoviesTvPeople: builder.query<PaginatedMediaResponse , {query: string;}>({
+      query: ({query}) => ({
+        url : `search/multi?query=${query}&include_adult=false&language=en-US&page=1`
+      })
+    }),
 
   }),
 });
@@ -44,5 +61,8 @@ export const {
   useGetActorDetailsQuery,
   useGetCollectionDetailsQuery,
   useGetAllMovieGenresQuery,
+  useGetGenreDetailsQuery,
   useGetAllTvGenresQuery,
+  useGetTvGenreDetailsQuery,
+  useLazySearchForMoviesTvPeopleQuery,
 } = generalApiSlice;

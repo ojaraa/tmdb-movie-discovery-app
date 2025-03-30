@@ -49,7 +49,7 @@ const MovieDetails = () => {
 
           <div className="sm:w-[70%] mt-[6rem] ">
             <h2 className="text-[2.6rem] sm:text-[4rem] mb-[1rem] font-bold">
-              {movieDetail?.title}{" "}
+              {movieDetail?.name || movieDetail?.title}{" "}
               {movieDetail?.release_date && (
                 <span>({movieDetail?.release_date.slice(0, 4)})</span>
               )}

@@ -12,7 +12,8 @@ import CollectionDetails from "@/components/collection-details";
 import AllSeasons from "@/pages/all-seasons";
 import SeasonDetails from "@/pages/season-details";
 import Genres from "@/pages/genres";
-import { Search } from "lucide-react";
+import GenreDetails from "@/pages/genre-details";
+import Search from "@/pages/search";
 
 const AppRoutes = () => {
   const router = createBrowserRouter([
@@ -27,15 +28,14 @@ const AppRoutes = () => {
         { path: "tv/:series_id", element: <TvSeriesDetails /> },
         { path: "tv/all-seasons/:series_id", element: <AllSeasons /> },
         { path: "person/:person_id", element: <ActorDetails /> },
-        {
-          path: ":mediaType/:movie_id/full-cast-crew",
-          element: <FullCreditsList />,
-        },
+        { path: ":mediaType/:movie_id/full-cast-crew", element: <FullCreditsList />},
         { path: "movie/:movie_id/all-videos", element: <AllVideos /> },
         { path: "collection/:collection_id", element: <CollectionDetails /> },
         { path: "tv/season/:series_id/:season_id", element: <SeasonDetails /> },
         { path: "genres", element: <Genres /> },
+        { path: "genre/:mediaType/:genre_id/:genre_name", element: <GenreDetails /> },
         { path: "search", element: <Search /> },
+
       ],
     },
   ]);

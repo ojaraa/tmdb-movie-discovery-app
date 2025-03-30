@@ -52,7 +52,7 @@ const TvSeriesDetails = () => {
 
           <div className="sm:w-[70%] mt-[6rem] ">
             <h2 className="text-[2.5rem] sm:text-[4rem] mb-[0rem] font-bold sm:leading-[50px]">
-              {seriesDetail?.original_name || seriesDetail?.name}{" "}
+              { seriesDetail?.name ||seriesDetail?.original_name }{" "}
               {seriesDetail?.first_air_date && (
                 <span>({seriesDetail?.first_air_date.slice(0, 4)})</span>
               )}

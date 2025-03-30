@@ -59,7 +59,7 @@ const CastList = ({ cast }: CreditsProps) => {
 
                         <div className="text-center my-2">
                           <div className="font-bold text-[1.4rem]">
-                            {member?.original_name}
+                            {member?.name ||member?.original_name}
                           </div>
                           <div className="font-medium text-[1.1rem]">
                             {member?.character}

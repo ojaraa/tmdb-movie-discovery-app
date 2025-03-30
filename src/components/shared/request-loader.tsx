@@ -11,7 +11,7 @@ type RequestLoaderProps = {
 const RequestLoader = (props: RequestLoaderProps) => {
   return (
     <AlertDialog open={props.loading}>
-      <LoaderComponent />
+      <LoaderComponent message="Loading...."/>
     </AlertDialog>
   );
 };

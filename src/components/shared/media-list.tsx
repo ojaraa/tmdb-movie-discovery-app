@@ -5,6 +5,7 @@ import { movieType } from "@/services/models/movie.model";
 import { useGetMediaListByCategoriesQuery } from "@/services/api/movies-api-slice";
 import { API_IMG, MediaType } from "@/services/models/general.model";
 import { fallbackPoster } from "@/lib/utils";
+import Loader from "./skeleton-loaders/loader";
 
 interface MediaListProps {
   pageTitle: string;
@@ -18,13 +19,13 @@ const MediaList = ({ pageTitle, mediaType }: MediaListProps) => {
     setSelectedCategory(category);
   };
   const [page, setPage] = useState<number>(1);
-  const { data: movieData, isLoading } = useGetMediaListByCategoriesQuery({
+  const { data: movieData, isLoading, isFetching } = useGetMediaListByCategoriesQuery({
     categoryType: selectedCategory,
     page,
     mediaType,
   });
-  if (isLoading) {
-    return <p>Loading...</p>;
+  if (isLoading || isFetching) {
+    return<Loader/>;
   }
   return (
     <>
@@ -73,7 +74,8 @@ const MediaList = ({ pageTitle, mediaType }: MediaListProps) => {
                         ? API_IMG + movie?.poster_path
                         : fallbackPoster
                     }
-                    alt=""
+                    alt={movie?.original_name || movie?.original_title}
+                    loading="lazy"
                     className="w-full h-full object-cover rounded-[5px]"
                   />
                 </div>

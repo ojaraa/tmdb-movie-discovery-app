@@ -7,6 +7,7 @@ import { API_IMG } from "@/services/models/general.model";
 import { Link } from "react-router-dom";
 // import { RiPlayCircleFill } from "react-icons/ri";
 import { MdMovie } from "react-icons/md";
+import Loader from "@/components/shared/skeleton-loaders/loader";
 // import 'swiper/css/pagination';
 // import 'swiper/css/scrollbar';
 
@@ -21,7 +22,7 @@ const Popular = () => {
   };
 
   if (isLoading) {
-    return <p>Loading....</p>;
+    return<Loader/>
   }
   return (
     <div>

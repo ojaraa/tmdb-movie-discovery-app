@@ -6,7 +6,6 @@ import { useFetchAllPopularTvShowsQuery } from "@/services/api/tv-api-slice";
 const Landing = () => {
   const { data: popularMovies } = useGetAllPopularMoviesQuery();
   const { data: popularTvShows } = useFetchAllPopularTvShowsQuery();
-  console.log(popularTvShows);
   return (
     <div>
       <Popular />
