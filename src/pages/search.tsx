@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLazySearchForMoviesTvPeopleQuery } from "@/services/api/general-api-slice";
 import { SearchIcon } from "lucide-react";
@@ -44,16 +44,16 @@ const Search = () => {
   return (
     <>
 
-    <div className="px-[10rem]">
+    <div className="px-4 sm:px-[10rem]">
       <div className="movies-page-header h-[25vh] bg-[linear-gradient(rgba(18,18,18,0.8),rgb(18,18,18)),url('/assets/bg.jpg')] bg-cover bg-no-repeat bg-bottom flex items-center justify-center">
         <h2 className="uppercase text-center mt-12 text-3xl font-bold">
           Search
         </h2>
       </div>
 
-      <div className="grid grid-cols-[5fr_1fr] gap-x-5 px-[13rem]">
+      <div className="grid gap-x-3 sm:gap-x-5 px-4 sm:px-[13rem]">
         <div className="flex bg-[#1c1c1c] border border-transparent rounded-full pl-10  items-center">
-          <SearchIcon />
+          <SearchIcon className=""/>
           <Input
             className="pr-3 py-6 border border-transparent rounded-full leading-5 bg-[#1c1c1c]"
             placeholder="Search for movies, tv shows and people...."
@@ -62,10 +62,10 @@ const Search = () => {
           />
         </div>
 
-        <Button className="py-6 rounded-full">Search</Button>
+        {/* <Button className="py-6 rounded-full">Search</Button> */}
       </div>
 
-      <div className="grid items-center gap-8 py-6 grid-cols-4 ">
+      <div className="grid items-center gap-8 py-6 grid-cols-2 sm:grid-cols-4 ">
         {isLoading ? (
           <Loader/>
         ) : (

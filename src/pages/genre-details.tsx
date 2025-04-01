@@ -22,18 +22,18 @@ const GenreDetails = () => {
   }
 
   return (
-    <div className="px-10">
+    <div className=" px-4 sm:px-10">
       <div className="movies-page-header h-[25vh] bg-[linear-gradient(rgba(18,18,18,0.8),rgb(18,18,18)),url('/assets/bg.jpg')] bg-cover bg-no-repeat bg-bottom flex items-center justify-center">
         <h2 className="uppercase text-center mt-12 text-3xl font-bold">
           Genre - {genre_name} {mediaType === "Movie" ? "Movies" : "TV Shows"}
         </h2>
       </div>
 
-      <div className="grid items-center gap-8 py-6 px-7 grid-cols-4">
+      <div className="grid items-center gap-4 sm:gap-8 py-6 px-0 sm:px-7 grid-cols-2 sm:grid-cols-4">
         {genreData?.results?.map((movie) => (
           <Link to={`/${mediaType}/${movie.id}`} key={movie.id}>
             <div className="relative">
-              <div className="h-[320px] w-full">
+              <div className=" h-[260px] sm:h-[320px] w-full">
                 <img
                   src={
                     movie?.poster_path
@@ -45,15 +45,15 @@ const GenreDetails = () => {
                 />
               </div>
 
-              <div className="absolute bottom-6 px-5 py-5 backdrop-blur-[54px] left-6 right-6 rounded-[8px]">
-                <h4 className="text-[1.2rem] font-semibold">
+              <div className="absolute bottom-6 px-3 sm:px-5 py-5 backdrop-blur-[54px]  left-3 sm:left-6 right-3 sm:right-6 rounded-[8px]">
+                <h4 className="text-base sm:text-[1.2rem] font-semibold">
                   {movie?.original_title || movie?.original_name}
                 </h4>
                 <div className="flex items-center justify-between mt-4">
-                  <p className="text-base font-normal text-[rgb(207, 206, 206)]">
+                  <p className=" text-sm sm:text-base font-normal text-[rgb(207, 206, 206)]">
                     {movie?.release_date || movie?.first_air_date}
                   </p>
-                  <p>
+                  <p className=" text-sm sm:text-base">
                     {8.5}{" "}
                     <span>
                       <img src="" alt="" />
