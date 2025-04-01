@@ -10,13 +10,14 @@ import { format } from "date-fns";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import Loader from "@/components/shared/skeleton-loaders/loader";
 
 const SeasonDetails = () => {
   const { series_id, season_id } = useParams();
-  const { data: seasonsDetail } = useGetSeriesDetailsQuery({
+  const { data: seasonsDetail , isLoading: loadingSeasonDetail} = useGetSeriesDetailsQuery({
     series_id: series_id as string,
   });
-  const { data: episodesDetail } = useGetSeasonDetailsQuery({
+  const { data: episodesDetail, isLoading: loadingEpisodeDetail } = useGetSeasonDetailsQuery({
     season_id: season_id as string,
     series_id: series_id as string,
   });
@@ -24,7 +25,10 @@ const SeasonDetails = () => {
   const loadMore = () => {
     setMovieCount((prev) => prev + 4);
   };
-  console.log(movieCount, episodesDetail?.episodes[0].guest_stars.length);
+
+  if (loadingSeasonDetail || loadingEpisodeDetail) {
+    return<Loader/>
+  }
 
   return (
     <div>

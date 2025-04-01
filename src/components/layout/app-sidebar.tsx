@@ -1,4 +1,4 @@
-import { Home, SearchIcon, Square, Tv, VideoIcon } from "lucide-react";
+import { Home, SearchIcon, Square, Star, Tv, VideoIcon } from "lucide-react";
 import { IoLogoBuffer } from "react-icons/io5";
 import {
   Sidebar,
@@ -49,7 +49,7 @@ const AppSidebar = () => {
           <SidebarGroupLabel>For You</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.slice(0, 2).map((item) => (
+              {item2.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link to={item.url}>
@@ -96,3 +96,16 @@ const items = [
     icon: SearchIcon,
   },
 ];
+
+const item2= [
+  {
+    title: "My List",
+    url: "list",
+    icon: Star,
+  },
+  {
+    title: "Favourites",
+    url: "movies",
+    icon: VideoIcon,
+  }
+]

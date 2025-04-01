@@ -1,3 +1,4 @@
+import Loader from "@/components/shared/skeleton-loaders/loader";
 import { fallbackPoster } from "@/lib/utils";
 import {
   useGetGenreDetailsQuery,
@@ -8,12 +9,17 @@ import { Link, useParams } from "react-router-dom";
 
 const GenreDetails = () => {
   const { genre_id, genre_name, mediaType } = useParams();
-  const { data } = useGetGenreDetailsQuery({ genre_id: genre_id ?? "" });
-  const { data: tvGenreData } = useGetTvGenreDetailsQuery({
+  const { data, isLoading: loadingDetails } = useGetGenreDetailsQuery({
+    genre_id: genre_id ?? "",
+  });
+  const { data: tvGenreData , isLoading} = useGetTvGenreDetailsQuery({
     genre_id: genre_id ?? "",
   });
   const genreData = mediaType === "Movie" ? data : tvGenreData;
 
+  if (loadingDetails || isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="px-10">
@@ -26,7 +32,7 @@ const GenreDetails = () => {
       <div className="grid items-center gap-8 py-6 px-7 grid-cols-4">
         {genreData?.results?.map((movie) => (
           <Link to={`/${mediaType}/${movie.id}`} key={movie.id}>
-            <div className="relative"  >
+            <div className="relative">
               <div className="h-[320px] w-full">
                 <img
                   src={

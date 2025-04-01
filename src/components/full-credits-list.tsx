@@ -3,12 +3,15 @@ import { useParams } from "react-router-dom";
 import FullCastAndCrew from "./full-cast-and-crew";
 import { API_IMG } from "@/services/models/general.model";
 import { fallbackBgImage } from "@/lib/utils";
+import Loader from "./shared/skeleton-loaders/loader";
 
 const FullCreditsList = () => {
   const { movie_id } = useParams();
   const movieId = movie_id ?? "default";
-  const { data: creditDetail } = useGetMovieDetailsQuery({ movie_id: movieId });
-  console.log(creditDetail);
+  const { data: creditDetail , isLoading } = useGetMovieDetailsQuery({ movie_id: movieId });
+  if (isLoading) {
+    return<Loader/>
+  }
   return (
     <div className="">
       <div

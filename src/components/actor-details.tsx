@@ -14,18 +14,23 @@ import {
 } from "react-icons/ri";
 
 import RolesList from "./shared/roles-list";
+import Loader from "./shared/skeleton-loaders/loader";
 
 const ActorDetails = () => {
   const { person_id } = useParams<string>();
   const personId = person_id ?? "";
   const [expanded, setExpanded] = useState(false);
   const toggleExpand = () => setExpanded(!expanded);
-  const { data: actorDetail } = useGetActorDetailsQuery({
+  const { data: actorDetail , isLoading } = useGetActorDetailsQuery({
     person_id: personId,
   });
 
 
   const genderImg = actorDetail?.gender === 1 ? female : male;
+
+  if (isLoading) {
+    return<Loader/>
+  }
 
   return (
     <div className=" grid gap-y-16 mx-6 sm:mx-[6rem] pb-10">

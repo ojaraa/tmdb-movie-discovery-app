@@ -53,7 +53,7 @@ const Popular = () => {
                 </p>
               </div>
 
-              <Link to={`movie/${movie?.id}`}>
+              <Link to={`${movie.media_type}/${movie?.id}`}>
                 <h1 className="sm:pb-8 text-[2.5rem] sm:text-[3.5rem] mb-2 font-bold">
                   {movie?.name} {movie?.title}
                 </h1>

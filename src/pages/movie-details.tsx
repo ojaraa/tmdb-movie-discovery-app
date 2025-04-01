@@ -1,6 +1,6 @@
 import { useGetMovieDetailsQuery } from "@/services/api/movies-api-slice";
 import { API_IMG } from "@/services/models/general.model";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { RiPlayCircleFill } from "react-icons/ri";
 import CastList from "@/components/shared/cast-list";
 import OtherInformation from "@/components/other-information";
@@ -8,11 +8,12 @@ import Similar from "@/components/shared/similar";
 import { fallbackBgImage, fallbackPoster } from "@/lib/utils";
 import Collection from "@/components/collection";
 import RelatedVideos from "@/components/shared/related-youtube-videos";
+import Loader from "@/components/shared/skeleton-loaders/loader";
 
 const MovieDetails = () => {
   const { movie_id } = useParams();
   const movieId = movie_id ?? "default";
-  const { data: movieDetail } = useGetMovieDetailsQuery({ movie_id: movieId });
+  const { data: movieDetail, isLoading } = useGetMovieDetailsQuery({ movie_id: movieId });
 
   const convertRatingToPercentage = (rating: number, decimalPlaces = 0) => {
     if (rating < 0 || rating > 10) {
@@ -21,6 +22,10 @@ const MovieDetails = () => {
     const percentage = (rating / 10) * 100;
     return `${percentage.toFixed(decimalPlaces)}`;
   };
+
+  if (isLoading) {
+    return<Loader/>
+  }
   return (
     <div className="pb-4 bg-[#000]">
       <div
@@ -73,12 +78,15 @@ const MovieDetails = () => {
             <div className="flex items-center gap-4 flex-wrap my-8">
               {movieDetail?.genres &&
                 movieDetail?.genres.slice(0, 5).map((genre, i) => (
-                  <div
+                  <Link to={`/genre/Movie/${genre?.id}/${genre?.name}`}>
+                     <div
                     key={i}
                     className="text-base border border-[rgba(255,255,255,0.298)] px-5 py-1 rounded-[30px] backdrop-blur-[54px]"
                   >
                     {genre.name}
                   </div>
+                  </Link>
+                 
                 ))}
             </div>
 

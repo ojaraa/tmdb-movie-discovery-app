@@ -3,18 +3,19 @@ import OtherInformation from "@/components/other-information";
 import CastList from "@/components/shared/cast-list";
 import RelatedVideos from "@/components/shared/related-youtube-videos";
 import Similar from "@/components/shared/similar";
+import Loader from "@/components/shared/skeleton-loaders/loader";
 import { fallbackBgImage, fallbackPoster } from "@/lib/utils";
 import { useGetSeriesDetailsQuery } from "@/services/api/tv-api-slice";
 import { API_IMG } from "@/services/models/general.model";
 import { RiPlayCircleFill } from "react-icons/ri";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const TvSeriesDetails = () => {
   const { series_id } = useParams();
-  const { data: seriesDetail } = useGetSeriesDetailsQuery({
+  const { data: seriesDetail, isLoading } = useGetSeriesDetailsQuery({
     series_id: series_id as string,
   });
-  console.log(seriesDetail);
+
   const convertRatingToPercentage = (rating: number, decimalPlaces = 0) => {
     if (rating < 0 || rating > 10) {
       throw new Error("Rating must be between 0 and 10");
@@ -22,6 +23,10 @@ const TvSeriesDetails = () => {
     const percentage = (rating / 10) * 100;
     return `${percentage.toFixed(decimalPlaces)}`;
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="pb-4 bg-[#000]">
@@ -52,7 +57,7 @@ const TvSeriesDetails = () => {
 
           <div className="sm:w-[70%] mt-[6rem] ">
             <h2 className="text-[2.5rem] sm:text-[4rem] mb-[0rem] font-bold sm:leading-[50px]">
-              { seriesDetail?.name ||seriesDetail?.original_name }{" "}
+              {seriesDetail?.name || seriesDetail?.original_name}{" "}
               {seriesDetail?.first_air_date && (
                 <span>({seriesDetail?.first_air_date.slice(0, 4)})</span>
               )}
@@ -86,12 +91,14 @@ const TvSeriesDetails = () => {
             <div className="flex items-center gap-4 flex-wrap my-8">
               {seriesDetail?.genres &&
                 seriesDetail?.genres.slice(0, 5).map((genre, i) => (
-                  <div
-                    key={i}
-                    className="text-base border border-[rgba(255,255,255,0.298)] px-5 py-1 rounded-[30px] backdrop-blur-[54px]"
-                  >
-                    {genre.name}
-                  </div>
+                  <Link to={`/genre/TV/${genre?.id}/${genre?.name}`}>
+                    <div
+                      key={i}
+                      className="text-base border border-[rgba(255,255,255,0.298)] px-5 py-1 rounded-[30px] backdrop-blur-[54px]"
+                    >
+                      {genre.name}
+                    </div>
+                  </Link>
                 ))}
             </div>
 
@@ -121,10 +128,11 @@ const TvSeriesDetails = () => {
       <div className="px-5 sm:px-[5rem] ">
         <CastList cast={seriesDetail?.credits.cast || []} />
 
-        {seriesDetail?.last_episode_to_air &&
-         <CurrentSeason currentSeason={seriesDetail?.last_episode_to_air || {}}/>
-        }
-       
+        {seriesDetail?.last_episode_to_air && (
+          <CurrentSeason
+            currentSeason={seriesDetail?.last_episode_to_air || {}}
+          />
+        )}
 
         <OtherInformation
           info={seriesDetail?.external_ids ?? {}}
@@ -170,7 +178,10 @@ const TvSeriesDetails = () => {
 
         {seriesDetail?.similar?.results &&
           seriesDetail?.similar?.results?.length && (
-            <Similar media={seriesDetail?.similar?.results || []} mediaType= 'tv' />
+            <Similar
+              media={seriesDetail?.similar?.results || []}
+              mediaType="tv"
+            />
           )}
 
         {seriesDetail?.videos?.results &&

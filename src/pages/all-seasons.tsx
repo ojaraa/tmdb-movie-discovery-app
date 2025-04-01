@@ -1,3 +1,4 @@
+import Loader from "@/components/shared/skeleton-loaders/loader";
 import { fallbackBgImage, fallbackPoster } from "@/lib/utils";
 import { useGetSeriesDetailsQuery } from "@/services/api/tv-api-slice";
 import { API_IMG, API_IMG_500 } from "@/services/models/general.model";
@@ -6,9 +7,12 @@ import { Link, useParams } from "react-router-dom";
 
 const AllSeasons = () => {
   const { series_id } = useParams();
-  const { data: seasonDetail } = useGetSeriesDetailsQuery({
+  const { data: seasonDetail , isLoading } = useGetSeriesDetailsQuery({
     series_id: series_id as string,
   });
+   if (isLoading) {
+      return<Loader/>
+    }
   return (
     <div className="">
       <div
