@@ -4,14 +4,18 @@ import { API_IMG } from "@/services/models/general.model";
 import { useParams } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useState } from "react";
+import Loader from "./skeleton-loaders/loader";
 
 const AllVideos = () => {
     const {movie_id} = useParams<string>()
-    const {data: allVideos} = useGetAllVideosQuery({movie_id: movie_id as string})
+    const {data: allVideos, isLoading} = useGetAllVideosQuery({movie_id: movie_id as string})
       const [visible, setVisible] = useState(10)
         const loadMore = () => {
             setVisible((prev) => prev + 10)
         };
+          if (isLoading) {
+            return<Loader/>
+          }
   return (
     <div className="">
       <div
@@ -24,13 +28,13 @@ const AllVideos = () => {
           })`,
         }}
       >
-        <h2 className=" text-center mt-12 text-[3rem] font-bold">
+        <h2 className=" text-center mt-12 text-[1.8rem] sm:text-[3rem] font-bold">
           {allVideos?.original_title} - Related Videos
         </h2>
       </div>
 
 
-      <div className="grid  grid-cols-3 gap-y-8 gap-x-8  mx-[8rem] pb-[4rem]">
+      <div className="grid  grid-cols-2 sm:grid-cols-3 gap-y-8 gap-x-8 mx-4  sm:mx-[8rem] pb-[4rem]">
         {allVideos?.videos.results. slice(0,visible).map((video) => (
           <div className="video" key={video.id}>
             <iframe
@@ -43,7 +47,7 @@ const AllVideos = () => {
               allowFullScreen
               className="w-full h-[280px] rounded-[8px]"
             ></iframe>
-            <h3 className="mt-4 text-[1.3rem] font-semibold"> {video.name}</h3>
+            <h3 className="mt-4 text-base text-center sm:text-[1.3rem] font-semibold"> {video.name}</h3>
           </div>
         ))}
       </div>

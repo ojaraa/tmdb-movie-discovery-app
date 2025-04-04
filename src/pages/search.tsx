@@ -84,6 +84,7 @@ const Search = () => {
                             : genderImg
                         }
                         alt={movie?.name}
+                        loading="lazy" 
                         className="w-full h-full object-cover rounded-[5px]"
                       />
                     )}
@@ -96,6 +97,7 @@ const Search = () => {
                               : fallbackPoster
                           }
                           alt=""
+                          loading="lazy" 
                           className="w-full h-full object-cover rounded-[5px]"
                         />
                       ))}

@@ -15,12 +15,13 @@ import { Link } from "react-router-dom";
 
 const AppSidebar = () => {
   return (
-    <Sidebar className=" pl-8">
+    <Sidebar className=" pl-8  ">
       <SidebarHeader className=" pt-10">
         <div className="text-center">
-          <Link to={`/`}>
+          <Link to={`/`} className="flex items-center justify-center gap-2">
+          <IoLogoBuffer className="flex items-center justify-center" />
             <h1 className="text-2xl font-bold tracking-[-2px] cursor-pointer text-primary ">
-              <IoLogoBuffer className="flex items-center justify-center" />
+              
               trend
             </h1>
           </Link>

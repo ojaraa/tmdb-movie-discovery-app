@@ -47,7 +47,7 @@ const Popular = () => {
               }}
             >
               <div className="flex items-center gap-2">
-                <img src="" alt={movie.name} className="w-4 h-4 " />
+                <img src="" alt={movie.name} className="w-4 h-4 " loading="lazy"  />
                 <p className="text-base font-extrabold">
                   {movie.vote_average * 10}
                 </p>

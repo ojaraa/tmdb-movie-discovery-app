@@ -16,7 +16,7 @@ const Genres = () => {
   return (
     <>
    
-      <div className="px-10">
+      <div className="sm:px-10 px-4">
         <div className="movies-page-header h-[25vh] bg-[linear-gradient(rgba(18,18,18,0.8),rgb(18,18,18)),url('/assets/bg.jpg')] bg-cover bg-no-repeat bg-bottom flex items-center justify-center">
           <h2 className="uppercase text-center mt-12 text-3xl font-bold">
             All Genres

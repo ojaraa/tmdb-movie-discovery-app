@@ -27,6 +27,7 @@ const CurrentSeason = ({ currentSeason }: SeasonProps) => {
                 : fallbackPoster
             }
             className="h-full w-full object-cover rounded-[9px]"
+            loading="lazy" 
             //   alt={ currentSeason?.season_number}
           />
         </div>

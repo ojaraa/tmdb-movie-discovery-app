@@ -16,6 +16,7 @@ const MediaCard = ({ id, name, img, mediaType }: MediaCardProps) => {
           <img
             src={API_IMG + img}
             alt="movie-poster"
+            loading="lazy" 
             className="w-full h-[280px] object-cover rounded-[5px]"
           />
         </div>

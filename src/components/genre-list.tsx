@@ -10,7 +10,7 @@ const GenreListComponent = ({ genreList, title }: GenreProps) => {
   return (
     <>
     <p className="text-2xl font-semibold">{title} Genres</p>
-    <div className="flex flex-wrap  gap-5 items-center justify-center">
+    <div className="flex items-center flex-wrap justify-center gap-5 ">
       {genreList?.genres.map((list) => (
         <Link to={`/genre/${title}/${list.id}/${list?.name}`} key={list.id}>
           <Button

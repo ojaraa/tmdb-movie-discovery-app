@@ -36,6 +36,7 @@ const CollectionDetails = () => {
                           : fallbackPoster
                       }
                       alt=""
+                      loading="lazy" 
                       className="w-full h-full object-cover rounded-[5px]"
                     />
                   </div>

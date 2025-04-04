@@ -52,10 +52,11 @@ const TvSeriesDetails = () => {
               }
               alt={seriesDetail?.original_name || seriesDetail?.name}
               className="h-full w-full rounded-[10px] object-cover"
+              loading="lazy" 
             />
           </div>
 
-          <div className="sm:w-[70%] mt-[6rem] ">
+          <div className="sm:w-[70%] mt-[15rem] sm:mt-[6rem] ">
             <h2 className="text-[2.5rem] sm:text-[4rem] mb-[0rem] font-bold sm:leading-[50px]">
               {seriesDetail?.name || seriesDetail?.original_name}{" "}
               {seriesDetail?.first_air_date && (
@@ -103,7 +104,7 @@ const TvSeriesDetails = () => {
             </div>
 
             <div className="">
-              <p className="text-[1.3rem] leading-9">
+              <p className=" text-lg sm:text-[1.3rem] leading-9">
                 {seriesDetail?.overview}
               </p>
             </div>
@@ -147,11 +148,11 @@ const TvSeriesDetails = () => {
             <div className="flex">
               {seriesDetail?.production_companies && (
                 <div className="flex flex-col gap-y-2">
-                  <h6 className="text-[1.8rem]  font-bold">
+                  <h6 className="text-xl sm:text-[1.8rem]   font-bold">
                     Production Companies
                   </h6>
                   {seriesDetail?.production_companies.map((company) => (
-                    <li className="text-xl" key={company?.id}>
+                    <li className="text-base sm:text-xl" key={company?.id}>
                       {company?.name}
                     </li>
                   ))}
@@ -162,11 +163,11 @@ const TvSeriesDetails = () => {
             <div className="grid gap-y-6">
               {seriesDetail?.production_countries && (
                 <div className="flex flex-col gap-y-2">
-                  <h6 className="text-[1.8rem]  font-bold">
+                  <h6 className="text-xl sm:text-[1.8rem]   font-bold">
                     Production Countries
                   </h6>
                   {seriesDetail?.production_countries.map((country) => (
-                    <li className="text-xl" key={country?.iso_3166_1}>
+                    <li className="text-base sm:text-xl" key={country?.iso_3166_1}>
                       {country?.name}
                     </li>
                   ))}

@@ -41,6 +41,7 @@ const GenreDetails = () => {
                       : fallbackPoster
                   }
                   alt=""
+                  loading="lazy" 
                   className="w-full h-full object-cover rounded-[5px]"
                 />
               </div>
@@ -56,7 +57,7 @@ const GenreDetails = () => {
                   <p className=" text-sm sm:text-base">
                     {8.5}{" "}
                     <span>
-                      <img src="" alt="" />
+                      <img src="" alt="" loading="lazy" />
                     </span>
                   </p>
                 </div>

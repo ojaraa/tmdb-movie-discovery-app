@@ -31,13 +31,13 @@ const OtherInformation = ({
   };
   return (
     <div className="py-8">
-      <h2 className="pb-6 uppercase text-[2.5rem] font-bold">
+      <h2 className="pb-6 uppercase text-[1.8rem]  sm:text-[2.5rem]  font-bold">
         Other Information
       </h2>
 
       <div className="grid  sm:grid-cols-2 items-center order-0">
         <div className="grid gap-y-6">
-          {/* {info ? <h6 className="text-[1.8rem]  font-bold">Social Links</h6> : ""} */}
+          {/* {info ? <h6 className="text-xl sm:text-[1.8rem]   font-bold">Social Links</h6> : ""} */}
 
           <div className="flex items-center gap-8 ">
             {homePageLink && (
@@ -115,14 +115,14 @@ const OtherInformation = ({
             )}
           </div>
         </div>
-        <div className="flex gap-16 flex-wrap">
+        <div className="flex gap-16 flex-wrap pt-6 sm:pt-0">
           {language?.length > 0 && (
             <div className="flex flex-col gap-y-2">
-              <h6 className="text-[1.8rem]  font-bold">Spoken Languages</h6>
+              <h6 className="text-xl sm:text-[1.8rem]  font-bold">Spoken Languages</h6>
               {language.map((lang) => (
                 <div className="flex">
                   <p
-                    className="text-[1.3rem] font-light "
+                    className="text-lg sm:text-[1.3rem] font-light "
                     key={lang?.iso_639_1}
                   >
                     {lang?.name}
@@ -133,15 +133,15 @@ const OtherInformation = ({
           )}
           {status && (
             <div className="flex flex-col gap-y-2">
-              <h6 className="text-[1.8rem]  font-bold">Status</h6>
-              <p className="text-[1.3rem] font-light ">{status}</p>
+              <h6 className="text-xl sm:text-[1.8rem]   font-bold">Status</h6>
+              <p className="text-lg sm:text-[1.3rem] font-light ">{status}</p>
             </div>
           )}
 
           {budget && (
             <div className="flex flex-col gap-y-2">
-              <h6 className="text-[1.8rem]  font-bold">Budget</h6>
-              <p className="text-[1.3rem] font-light">
+              <h6 className="text-xl sm:text-[1.8rem]   font-bold">Budget</h6>
+              <p className="text-lg sm:text-[1.3rem] font-light">
                 ${formattedNumber(budget)}
               </p>
             </div>
@@ -150,7 +150,7 @@ const OtherInformation = ({
           {revenue ? (
             <div className="flex flex-col gap-y-2">
               <h6 className="text-[1.6rem]  font-bold">Revenue</h6>
-              <p className="text-[1.3rem] font-light">
+              <p className="text-lg sm:text-[1.3rem] font-light">
                 ${formattedNumber(revenue)}
               </p>
             </div>

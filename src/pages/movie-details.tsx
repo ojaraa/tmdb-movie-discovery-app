@@ -52,7 +52,7 @@ const MovieDetails = () => {
             />
           </div>
 
-          <div className="sm:w-[70%] mt-[6rem] ">
+          <div className="sm:w-[70%] mt-[15rem] sm:mt-[6rem] ">
             <h2 className="text-[2.6rem] sm:text-[4rem] mb-[1rem] font-bold">
               {movieDetail?.name || movieDetail?.title}{" "}
               {movieDetail?.release_date && (
@@ -128,11 +128,11 @@ const MovieDetails = () => {
             <div className="flex">
               {movieDetail?.production_companies && (
                 <div className="flex flex-col gap-y-2">
-                  <h6 className="text-[1.8rem]  font-bold">
+                  <h6 className="text-xl sm:text-[1.8rem]   font-bold">
                     Production Companies
                   </h6>
                   {movieDetail?.production_companies.map((company) => (
-                    <li className="text-xl" key={company?.id}>{company?.name}</li>
+                    <li className=" text-base sm:text-xl" key={company?.id}>{company?.name}</li>
                   ))}
                 </div>
               )}
@@ -141,11 +141,11 @@ const MovieDetails = () => {
             <div className="grid gap-y-6">
               {movieDetail?.production_countries && (
                 <div className="flex flex-col gap-y-2">
-                  <h6 className="text-[1.8rem]  font-bold">
+                  <h6 className="text-xl sm:text-[1.8rem]  font-bold">
                     Production Countries
                   </h6>
                   {movieDetail?.production_countries.map((country) => (
-                    <li className="text-xl" key={country?.iso_3166_1}>{country?.name}</li>
+                    <li className=" text-base sm:text-xl" key={country?.iso_3166_1}>{country?.name}</li>
                   ))}
                 </div>
               )}

@@ -14,7 +14,7 @@ interface CreditsProps {
 const CastList = ({ cast }: CreditsProps) => {
   return (
     <div className="py-8">
-      <h2 className="pb-6 uppercase text-[2.5rem] font-bold">TOP CAST </h2>
+      <h2 className="pb-6 uppercase text-[1.8rem] sm:text-[2.5rem] font-bold">TOP CAST </h2>
       <div className="cast-members">
         <Swiper
           modules={[Navigation]}
@@ -45,7 +45,7 @@ const CastList = ({ cast }: CreditsProps) => {
                   <SwiperSlide key={member?.cast_id}>
                     <Link to={`/person/${member?.id}`}>
                       <div className="flex flex-col cursor-pointer">
-                        <div className="h-[300px] w-full hover:opacity-70 transition ease-in duration-300 rounded-lg ">
+                        <div className="h-[220px] sm:h-[300px] w-full hover:opacity-70 transition ease-in duration-300 rounded-lg ">
                           <img
                             src={
                               member?.profile_path
@@ -58,10 +58,10 @@ const CastList = ({ cast }: CreditsProps) => {
                         </div>
 
                         <div className="text-center my-2">
-                          <div className="font-bold text-[1.4rem]">
+                          <div className="font-bold text-lg sm:text-[1.4rem]">
                             {member?.name ||member?.original_name}
                           </div>
-                          <div className="font-medium text-[1.1rem]">
+                          <div className="sm:font-medium text-base sm:text-[1.1rem]">
                             {member?.character}
                           </div>
                         </div>
@@ -76,7 +76,7 @@ const CastList = ({ cast }: CreditsProps) => {
       {cast?.length != 0 && (
         <div className="flex items-center justify-center my-10">
           <Link to={`full-cast-crew`}>
-            <Button className="!rounded-[24px] !px-7 !py-7">
+            <Button className="!rounded-[24px] !px-7 !py-6 sm:!py-7">
               Full cast and crew
             </Button>
           </Link>

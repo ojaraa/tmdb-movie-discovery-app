@@ -34,6 +34,7 @@ const RolesList = ({ title, roles, type, mediaType }: RoleListProps) => {
                         : fallbackPoster
                     }
                     className="h-full w-full object-cover rounded-[9px]"
+                    loading="lazy" 
                     alt={role?.original_title}
                   />
                 </div>

@@ -21,7 +21,8 @@ const tvApiSlice = apiSlice.injectEndpoints({
                 url: `tv/${series_id}/season/${season_id}?&language=en-US&append_to_response=videos`,
                 method: "GET"
             })
-        })
+        }),
+        
     })
 })
 

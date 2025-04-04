@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "../ui/sidebar";
 import AppSidebar from "./app-sidebar";
 import { useEffect, useRef } from "react";
+import Footer from "../shared/footer";
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -29,11 +30,13 @@ const Layout = () => {
     <div>
       <SidebarProvider>
         <AppSidebar />
-        <main className="flex flex-col h-screen w-full relative overflow-auto "  ref={contentRef} >
+        <main className="flex flex-col h-screen w-full relative overflow-auto bg-[rgb(14,14,14)] "  ref={contentRef} >
           <SidebarTrigger className="absolute left-5 top-5 " />
           <div className="">
             <Outlet />
+           
           </div>
+          <Footer/>
         </main>
       </SidebarProvider>
       {/* <Outlet /> */}

@@ -42,7 +42,7 @@ const SeasonDetails = () => {
           })`,
         }}
       >
-        <h2 className=" text-center mt-12 text-[2rem] sm:text-[3rem] font-bold">
+        <h2 className=" text-center mt-[8rem] sm:mt-12 text-[2rem] sm:text-[3rem] font-bold">
           {seasonsDetail?.name || seasonsDetail?.name} -{" "}
           {episodesDetail?.season_number === 0
             ? `Specials`
@@ -67,6 +67,7 @@ const SeasonDetails = () => {
                       : fallbackPoster
                   }
                   alt={episode?.name}
+                  loading="lazy" 
                   className="h-full w-full object-cover rounded-[9px]"
                 />
               </div>
@@ -111,6 +112,7 @@ const SeasonDetails = () => {
                                   : genderImg
                               }
                               className="h-full w-full object-cover rounded-[9px]"
+                              loading="lazy" 
                               alt={guest?.original_name}
                             />
                           </div>

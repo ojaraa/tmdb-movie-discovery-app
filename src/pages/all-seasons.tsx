@@ -25,7 +25,7 @@ const AllSeasons = () => {
           })`,
         }}
       >
-        <h2 className=" text-center mt-12 text-[2rem] sm:text-[3rem] font-bold">
+        <h2 className=" text-center mt-[8rem] sm:mt-12 text-[2rem] sm:text-[3rem] font-bold">
           {seasonDetail?.original_name || seasonDetail?.name} - All Seasons
         </h2>
       </div>
@@ -34,7 +34,7 @@ const AllSeasons = () => {
         {seasonDetail?.seasons?.map((season) => (
           <Link to={`/tv/season/${series_id}/${season?.season_number}`}>
             <div className=" grid grid-cols-[1fr_2.5fr] cursor-pointer gap-2 bg-[#171717] rounded-[15px]">
-              <div className="h-[170px] rounded-[9px] ">
+              <div className="h-full rounded-[9px] ">
                 <img
                   src={
                     season?.poster_path
@@ -42,6 +42,7 @@ const AllSeasons = () => {
                       : fallbackPoster
                   }
                   className="h-full w-full object-cover rounded-[9px]"
+                  loading="lazy" 
                   alt={season?.name}
                 />
               </div>
@@ -49,8 +50,8 @@ const AllSeasons = () => {
               <div className="grid gap-y-2 px-5 py-5">
                 <h2 className="font-bold text-[1.4rem]">{season?.name}</h2>
 
-                <p className="text-[#a6a7a8] ">
-                  {season?.overview.slice(0, 250) || "No Overview Available"}..
+                <p className=" text-sm leading-5 text-[#a6a7a8] ">
+                  {season?.overview.slice(0, 200) || "No Overview Available"}..
                 </p>
 
                 <div className=" flex flex-col sm:flex-row items-start sm:items-center gap-x-6 gap-y-2">

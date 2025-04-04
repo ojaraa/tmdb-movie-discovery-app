@@ -24,7 +24,7 @@ const FullCreditsList = () => {
           })`,
         }}
       >
-        <h2 className=" text-center mt-12 text-[3rem] font-bold">
+        <h2 className=" text-center mt-12 text-[1.8rem] sm:text-[3rem] font-bold">
           {creditDetail?.original_title} - Cast & Crew
         </h2>
       </div>

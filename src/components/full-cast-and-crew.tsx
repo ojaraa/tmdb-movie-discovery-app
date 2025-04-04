@@ -20,7 +20,7 @@ const FullCastAndCrew = ({ title, type, credits }: CreditsProps) => {
 
   return (
     <div className=" ">
-      <h2 className="pb-6  text-[2rem] font-semibold">
+      <h2 className="pb-6 text-2xl sm:text-[2rem] font-semibold">
         {title}
         <span> ({credits?.length})</span>
       </h2>
@@ -38,12 +38,13 @@ const FullCastAndCrew = ({ title, type, credits }: CreditsProps) => {
                         : genderImg
                     }
                     className="h-full w-full object-cover rounded-[9px]"
+                    loading="lazy" 
                     alt={role?.original_name}
                   />
                 </div>
 
                 <div className="grid gap-y-2 px-5 py-5">
-                  <h2 className="font-bold text-[1.4rem]">
+                  <h2 className=" font-semibold sm:font-bold text-[1.4rem]">
                     {role?.original_name}
                   </h2>
                
