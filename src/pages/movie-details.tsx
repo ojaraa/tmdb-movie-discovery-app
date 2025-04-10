@@ -9,7 +9,7 @@ import { addToWatchList, fallbackBgImage, fallbackPoster } from "@/lib/utils";
 import Collection from "@/components/collection";
 import RelatedVideos from "@/components/shared/related-youtube-videos";
 import Loader from "@/components/shared/skeleton-loaders/loader";
-import { ToastContainer } from "react-toastify";
+import { Slide, ToastContainer } from "react-toastify";
 
 
 import { MdPlaylistAdd } from "react-icons/md";
@@ -182,7 +182,14 @@ const MovieDetails = () => {
          videos={movieDetail?.videos?.results || []}
         />
       </div>
-      <ToastContainer position="top-right" />
+ <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        theme="dark"
+        transition={Slide}
+        closeOnClick={true}
+        pauseOnHover
+      />
       
     </div>
   );

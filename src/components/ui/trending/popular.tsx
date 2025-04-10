@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { MdMovie, MdPlaylistAdd } from "react-icons/md";
 import Loader from "@/components/shared/skeleton-loaders/loader";
 import { addToWatchList } from "@/lib/utils";
-import { ToastContainer } from "react-toastify";
+import {  ToastContainer, Zoom } from "react-toastify";
 import { Star } from "lucide-react";
 
 const Popular = () => {
@@ -86,7 +86,7 @@ const Popular = () => {
                         "",
                       release_date: movie?.release_date || "",
                       poster_path: movie?.poster_path || "",
-                      type: "movie",
+                      type: movie?.media_type || "",
                     })
                   }
                 >
@@ -101,7 +101,16 @@ const Popular = () => {
         ))}
       </Swiper>
 
-      <ToastContainer position="top-right" />
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={true}
+        newestOnTop={true}
+        theme="dark"
+        transition={Zoom}
+        closeOnClick={true}
+        pauseOnHover
+      />
     </div>
   );
 };

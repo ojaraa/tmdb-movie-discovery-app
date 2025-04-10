@@ -17,6 +17,10 @@ export function cn(...inputs: ClassValue[]) {
 export const fallbackBgImage = "/assets/bg.jpg";
 export const fallbackPoster = "/assets/poster.png";
 
+export const getWatchlist = (): WatchList[] => {
+  return JSON.parse(localStorage.getItem("watchlist") || "[]");
+};
+
 export const addToWatchList = (movie: WatchList) => {
   const storedList: WatchList[] = JSON.parse( localStorage.getItem("watchlist") || "[]");
   const movieData = {
@@ -27,6 +31,8 @@ export const addToWatchList = (movie: WatchList) => {
   };
 
   const existingWtachList = storedList.some((item) => item?.id === movieData.id);
+ 
+  
 
   if (!existingWtachList) {
     const updatedList = [...storedList, movie];
@@ -34,6 +40,6 @@ export const addToWatchList = (movie: WatchList) => {
     toast.success( `${movieData.title} has been added to your Watchlist`)
   }else{
     toast.info(`${movieData.title} is already in Watchlist`);
-    console.log(`${movieData.title} is already in Watchlist`)
+  
   }
 };

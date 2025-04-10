@@ -120,7 +120,7 @@ const OtherInformation = ({
             <div className="flex flex-col gap-y-2">
               <h6 className="text-xl sm:text-[1.8rem]  font-bold">Spoken Languages</h6>
               {language.map((lang) => (
-                <div className="flex">
+                <div className="flex" key={lang?.iso_639_1}>
                   <p
                     className="text-lg sm:text-[1.3rem] font-light "
                     key={lang?.iso_639_1}

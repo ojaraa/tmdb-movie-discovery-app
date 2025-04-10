@@ -42,8 +42,8 @@ const CastList = ({ cast }: CreditsProps) => {
             : cast?.map((member) => {
                 const genderImg = member.gender === 1 ? female : male;
                 return (
-                  <SwiperSlide key={member?.cast_id}>
-                    <Link to={`/person/${member?.id}`}>
+                  <SwiperSlide>
+                    <Link to={`/person/${member?.id}`}  key={member?.cast_id}>
                       <div className="flex flex-col cursor-pointer">
                         <div className="h-[220px] sm:h-[300px] w-full hover:opacity-70 transition ease-in duration-300 rounded-lg ">
                           <img

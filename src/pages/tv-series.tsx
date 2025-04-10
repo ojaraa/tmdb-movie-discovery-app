@@ -10,7 +10,7 @@ import { API_IMG } from "@/services/models/general.model";
 import { MdPlaylistAdd } from "react-icons/md";
 import { RiPlayCircleFill } from "react-icons/ri";
 import { Link, useParams } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { Slide, ToastContainer } from "react-toastify";
 
 const TvSeriesDetails = () => {
   const { series_id } = useParams();
@@ -93,10 +93,10 @@ const TvSeriesDetails = () => {
 
             <div className="flex items-center gap-4 flex-wrap my-8">
               {seriesDetail?.genres &&
-                seriesDetail?.genres.slice(0, 5).map((genre, i) => (
+                seriesDetail?.genres.slice(0, 5).map((genre) => (
                   <Link to={`/genre/TV/${genre?.id}/${genre?.name}`}>
                     <div
-                      key={i}
+                      key={genre?.id}
                       className="text-base border border-[rgba(255,255,255,0.298)] px-5 py-1 rounded-[30px] backdrop-blur-[54px]"
                     >
                       {genre.name}
@@ -210,7 +210,14 @@ const TvSeriesDetails = () => {
             <RelatedVideos videos={seriesDetail?.videos?.results || []} />
           )}
       </div>
-            <ToastContainer position="top-right" />
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        theme="dark"
+        transition={Slide}
+        closeOnClick={true}
+        pauseOnHover
+      />
     </div>
   );
 };
