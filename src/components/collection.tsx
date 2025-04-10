@@ -23,7 +23,7 @@ const Collection = ({ collection, tagline }: CollectionProps) => {
         }}
       >
         <>
-          <h1 className=" text-[2.5rem] sm:text-[3.5rem] font-extrabold mb-4 ">
+          <h1 className=" text-[1.9rem] sm:text-[3.5rem] font-extrabold mb-4 ">
             {collection?.name}
           </h1>
           <p className="mb-4 italic text-[1.2rem]"> {tagline}</p>

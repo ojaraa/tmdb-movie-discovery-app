@@ -191,6 +191,7 @@ export interface CastCredit {
   popularity: number;
   poster_path: string | null;
   release_date: string;
+  first_air_date: string;
   title: string;
   video: boolean;
   vote_average: number;

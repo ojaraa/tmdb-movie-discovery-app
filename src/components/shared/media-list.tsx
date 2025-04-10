@@ -41,35 +41,35 @@ const MediaList = ({ pageTitle, mediaType }: MediaListProps) => {
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-4 grid-cols-2 gap-4 px-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4  gap-4 items-center px-8 sm:w-[50vw] mx-auto py-6">
           <Button
-            className="border-none py-1 px-4 rounded-[.7rem] bg-[#222]"
+            className="border-none !py-6 px-4 rounded-[.7rem] bg-[#222]"
             onClick={() => handleSelectCategory(movieType.trending)}
           >
             Trending
           </Button>
 
           <Button
-            className="border-none py-1.5 px-4 rounded-[.7rem] bg-[#222] "
+            className="border-none !py-6 px-4 rounded-[.7rem] bg-[#222] "
             onClick={() => handleSelectCategory(movieType.topRated)}
           >
             Top Rated
           </Button>
           <Button
-            className="border-none py-1.5 px-4 rounded-[.7rem] bg-[#222]"
+            className="border-none !py-6 px-4 rounded-[.7rem] bg-[#222]"
             onClick={() => handleSelectCategory(movieType.popular)}
           >
             Popular
           </Button>
           <Button
-            className="border-none py-1.5 px-4 rounded-[.7rem] bg-[#222]"
+            className="border-none !py-6 px-4 rounded-[.7rem] bg-[#222]"
             onClick={() => handleSelectCategory(movieType.nowPlaying)}
           >
             Now in cinemas
           </Button>
         </div>
 
-        <div className="grid items-center gap-4 sm:gap-8 py-6  sm:px-7 grid-cols-2 sm:grid-cols-4">
+        <div className="grid items-center gap-4 sm:gap-y-8  sm:gap-x-6   sm:px-7 grid-cols-2 sm:grid-cols-5">
           {movieData?.results?.map((movie) => (
             <Link to={`/${mediaType}/${movie.id}`}>
               <div className="relative" key={movie.id}>
@@ -85,8 +85,8 @@ const MediaList = ({ pageTitle, mediaType }: MediaListProps) => {
                     className="w-full h-full object-cover rounded-[5px]"
                   />
                 </div>
-                <div className="py-2 flex items-center justify-center">
-                  <h4 className=" text-base sm:text-[1.2rem] font-medium text-center ">
+                <div className="py-3 flex items-center justify-center">
+                  <h4 className=" text-base sm:text-[1.2rem] font-medium text-center pt-2 ">
                     {movie?.name ||
                       movie?.original_title ||
                       movie?.original_name}{" "}
@@ -115,6 +115,8 @@ const MediaList = ({ pageTitle, mediaType }: MediaListProps) => {
           Load More
         </Button>
       </div>
+
+      
     </>
   );
 };

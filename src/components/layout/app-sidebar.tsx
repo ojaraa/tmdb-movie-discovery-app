@@ -101,12 +101,12 @@ const items = [
 const item2= [
   {
     title: "My List",
-    url: "list",
+    url: "favourites",
     icon: Star,
   },
   {
     title: "Favourites",
-    url: "movies",
+    url: "favourites",
     icon: VideoIcon,
   }
 ]

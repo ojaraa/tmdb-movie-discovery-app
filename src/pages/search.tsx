@@ -44,14 +44,14 @@ const Search = () => {
   return (
     <>
 
-    <div className="px-4 sm:px-[10rem]">
+    <div className="">
       <div className="movies-page-header h-[25vh] bg-[linear-gradient(rgba(18,18,18,0.8),rgb(18,18,18)),url('/assets/bg.jpg')] bg-cover bg-no-repeat bg-bottom flex items-center justify-center">
         <h2 className="uppercase text-center mt-12 text-3xl font-bold">
           Search
         </h2>
       </div>
 
-      <div className="grid gap-x-3 sm:gap-x-5 px-4 sm:px-[13rem]">
+      <div className="grid gap-x-3 sm:gap-x-5 px-4 sm:px-[23rem] py-6">
         <div className="flex bg-[#1c1c1c] border border-transparent rounded-full pl-10  items-center">
           <SearchIcon className=""/>
           <Input
@@ -76,7 +76,8 @@ const Search = () => {
               <Link to={`/${mediaType}/${movie.id}`} key={movie.id}>
                 <div className="relative">
                   <div className="h-[320px] w-full">
-                    {mediaType === "person" && (
+
+                    {(mediaType === "person") && (
                       <img
                         src={
                           movie?.profile_path
@@ -88,19 +89,21 @@ const Search = () => {
                         className="w-full h-full object-cover rounded-[5px]"
                       />
                     )}
-                    {mediaType === "movie" ||
-                      (mediaType === "TV" && (
+                    {(mediaType === "movie" || mediaType === "tv") && (
                         <img
                           src={
                             movie?.poster_path
                               ? API_IMG + movie?.poster_path
                               : fallbackPoster
                           }
-                          alt=""
+                          alt={movie?.original_title ||
+                            movie?.original_title ||
+                            movie?.title ||
+                            movie?.name}
                           loading="lazy" 
                           className="w-full h-full object-cover rounded-[5px]"
                         />
-                      ))}
+                      )}
                   </div>
                 </div>
 

@@ -4,11 +4,13 @@ import CastList from "@/components/shared/cast-list";
 import RelatedVideos from "@/components/shared/related-youtube-videos";
 import Similar from "@/components/shared/similar";
 import Loader from "@/components/shared/skeleton-loaders/loader";
-import { fallbackBgImage, fallbackPoster } from "@/lib/utils";
+import { addToWatchList, fallbackBgImage, fallbackPoster } from "@/lib/utils";
 import { useGetSeriesDetailsQuery } from "@/services/api/tv-api-slice";
 import { API_IMG } from "@/services/models/general.model";
+import { MdPlaylistAdd } from "react-icons/md";
 import { RiPlayCircleFill } from "react-icons/ri";
 import { Link, useParams } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 const TvSeriesDetails = () => {
   const { series_id } = useParams();
@@ -52,7 +54,7 @@ const TvSeriesDetails = () => {
               }
               alt={seriesDetail?.original_name || seriesDetail?.name}
               className="h-full w-full rounded-[10px] object-cover"
-              loading="lazy" 
+              loading="lazy"
             />
           </div>
 
@@ -109,9 +111,24 @@ const TvSeriesDetails = () => {
               </p>
             </div>
             <div className="flex items-center gap-4 my-8 text-lg">
-              <button className="flex items-center gap-2 bg-transparent outline-none border border-[#fff] py-[7px] px-5 rounded-[25px]">
-                <RiPlayCircleFill style={{ color: "#fff", fontSize: "2rem" }} />
-                <p>Play Trailer</p>
+              <button
+                className="flex items-center gap-2 bg-transparent outline-none border border-[#fff] py-[7px] px-5 rounded-[25px]"
+                onClick={() =>
+                  addToWatchList({
+                    id: seriesDetail?.id || 0,
+                    name:
+                      seriesDetail?.name ||
+                      seriesDetail?.original_name ||
+                     
+                      "",
+                    release_date: seriesDetail?.first_air_date || "",
+                    poster_path: seriesDetail?.poster_path || "",
+                    type: "tv",
+                  })
+                }
+              >
+                <MdPlaylistAdd style={{ color: "#fff", fontSize: "2rem" }} />
+                <p>Add to Watchlist</p>
               </button>
 
               <button
@@ -167,7 +184,10 @@ const TvSeriesDetails = () => {
                     Production Countries
                   </h6>
                   {seriesDetail?.production_countries.map((country) => (
-                    <li className="text-base sm:text-xl" key={country?.iso_3166_1}>
+                    <li
+                      className="text-base sm:text-xl"
+                      key={country?.iso_3166_1}
+                    >
                       {country?.name}
                     </li>
                   ))}
@@ -190,6 +210,7 @@ const TvSeriesDetails = () => {
             <RelatedVideos videos={seriesDetail?.videos?.results || []} />
           )}
       </div>
+            <ToastContainer position="top-right" />
     </div>
   );
 };

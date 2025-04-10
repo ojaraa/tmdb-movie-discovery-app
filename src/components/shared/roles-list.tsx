@@ -41,15 +41,16 @@ const RolesList = ({ title, roles, type, mediaType }: RoleListProps) => {
 
                 <div className="grid gap-y-2 place-items-center sm:place-items-start">
               
-                  <h2 className="font-bold text-lg sm:text-[1.4rem] gap-2">
+                  <h2 className="font-semibold text-lg sm:text-[1.2rem] gap-2">
                     {`${
+                        role?.original_name ||
                       role?.original_title ||
                       role?.name ||
-                      role?.original_name ||
+                    
                       role?.title
                     }${
-                      role?.release_date
-                        ? ` (${format(role?.release_date, "yyyy")})`
+                      (role?.release_date || role?.first_air_date)
+                        ? ` (${format(role?.release_date || role?.first_air_date, "yyyy")})`
                         : ""
                     }`}
                   </h2>
@@ -63,7 +64,7 @@ const RolesList = ({ title, roles, type, mediaType }: RoleListProps) => {
                     {/* <p className=""></p> */}
                   </div>
                   {role?.overview ? (
-                    <p className="text-sm leading-7 text-center sm:text-left sm:text-base">
+                    <p className="text-sm sm:leading-[24px] text-center sm:text-left sm:text-sm">
                       {role?.overview.slice(0, 250)}...
                     </p>
                   ) : (

@@ -26,9 +26,9 @@ const MediaSlider = ({
             spaceBetween={15}
             slidesPerView={5}
             breakpoints={{
-              320: {
+              360: {
                 slidesPerView: 2.2,
-                spaceBetween: 15,
+                spaceBetween: 10,
               },
               768: {
                 slidesPerView: 3.2,
@@ -45,10 +45,11 @@ const MediaSlider = ({
             {mediaData?.results.map((movie) => (
               <SwiperSlide key={movie.id}>
                 <MediaCard
-                  name={movie.original_title ?? movie.title ?? ''} 
+                  name={movie.original_title ?? movie.title ?? movie?.name ?? ''} 
                   img={movie.poster_path || fallbackPoster}
                   id={movie.id}
                   mediaType={mediaType}
+                  releaseDate = {movie?.first_air_date ?? movie?.release_date ?? ""}
                 />
               </SwiperSlide>
             ))}

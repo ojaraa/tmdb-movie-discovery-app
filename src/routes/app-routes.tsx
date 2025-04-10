@@ -14,6 +14,7 @@ import SeasonDetails from "@/pages/season-details";
 import Genres from "@/pages/genres";
 import GenreDetails from "@/pages/genre-details";
 import Search from "@/pages/search";
+import Favourites from "@/pages/favourites";
 
 const AppRoutes = () => {
   const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const AppRoutes = () => {
         { path: "genres", element: <Genres /> },
         { path: "genre/:mediaType/:genre_id/:genre_name", element: <GenreDetails /> },
         { path: "search", element: <Search /> },
+        { path: "favourites", element: <Favourites /> },
+
+        
+
 
       ],
     },

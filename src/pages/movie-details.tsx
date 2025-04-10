@@ -5,10 +5,14 @@ import { RiPlayCircleFill } from "react-icons/ri";
 import CastList from "@/components/shared/cast-list";
 import OtherInformation from "@/components/other-information";
 import Similar from "@/components/shared/similar";
-import { fallbackBgImage, fallbackPoster } from "@/lib/utils";
+import { addToWatchList, fallbackBgImage, fallbackPoster } from "@/lib/utils";
 import Collection from "@/components/collection";
 import RelatedVideos from "@/components/shared/related-youtube-videos";
 import Loader from "@/components/shared/skeleton-loaders/loader";
+import { ToastContainer } from "react-toastify";
+
+
+import { MdPlaylistAdd } from "react-icons/md";
 
 const MovieDetails = () => {
   const { movie_id } = useParams();
@@ -94,9 +98,16 @@ const MovieDetails = () => {
               <p className="text-[1.3rem] leading-9">{movieDetail?.overview}</p>
             </div>
             <div className="flex items-center gap-4 my-8 text-lg">
-              <button className="flex items-center gap-2 bg-transparent outline-none border border-[#fff] py-[7px] px-5 rounded-[25px]">
-                <RiPlayCircleFill style={{ color: "#fff", fontSize: "2rem" }} />
-                <p>Play Trailer</p>
+              <button className="flex items-center gap-2 bg-transparent outline-none border border-[#fff] py-[7px] px-5 rounded-[25px]" onClick={() => addToWatchList({
+                 id: movieDetail?.id || 0, 
+                 name: movieDetail?.name ||  movieDetail?.title ||  movieDetail?.original_title ||  "",
+                release_date: movieDetail?.release_date || "",
+                poster_path: movieDetail?.poster_path || "",
+                type: "movie"
+              
+                })}>
+                <MdPlaylistAdd style={{ color: "#fff", fontSize: "2rem" }} />
+                <p>Add to Watchlist</p>
               </button>
 
               <button
@@ -106,6 +117,8 @@ const MovieDetails = () => {
                 <RiPlayCircleFill style={{ color: "#fff", fontSize: "2rem" }} />
                 <span> Watch</span>
               </button>
+
+        
             </div>
           </div>
         </div>
@@ -169,6 +182,8 @@ const MovieDetails = () => {
          videos={movieDetail?.videos?.results || []}
         />
       </div>
+      <ToastContainer position="top-right" />
+      
     </div>
   );
 };

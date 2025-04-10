@@ -1,15 +1,14 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-// import 'swiper/css';
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import { useFetchAllTrendingMediaQuery } from "@/services/api/general-api-slice";
 import { API_IMG } from "@/services/models/general.model";
 import { Link } from "react-router-dom";
-// import { RiPlayCircleFill } from "react-icons/ri";
-import { MdMovie } from "react-icons/md";
+import { MdMovie, MdPlaylistAdd } from "react-icons/md";
 import Loader from "@/components/shared/skeleton-loaders/loader";
-// import 'swiper/css/pagination';
-// import 'swiper/css/scrollbar';
+import { addToWatchList } from "@/lib/utils";
+import { ToastContainer } from "react-toastify";
+import { Star } from "lucide-react";
 
 const Popular = () => {
   const { data: trendingMedia, isLoading } = useFetchAllTrendingMediaQuery();
@@ -22,7 +21,7 @@ const Popular = () => {
   };
 
   if (isLoading) {
-    return<Loader/>
+    return <Loader />;
   }
   return (
     <div>
@@ -47,9 +46,10 @@ const Popular = () => {
               }}
             >
               <div className="flex items-center gap-2">
-                <img src="" alt={movie.name} className="w-4 h-4 " loading="lazy"  />
+               
+                <Star fill="#F3A218" stroke="#F3A218" size={16}/>
                 <p className="text-base font-extrabold">
-                  {movie.vote_average * 10}
+                  {movie.vote_average.toFixed(1)}
                 </p>
               </div>
 
@@ -59,7 +59,9 @@ const Popular = () => {
                 </h1>
               </Link>
 
-              <p className="w-full sm:w-[55%]">{truncateString(movie?.overview, 180)}</p>
+              <p className="w-full sm:w-[55%]">
+                {truncateString(movie?.overview, 180)}
+              </p>
               {movie.release_date && (
                 <p className="mt-8 font-bold ">
                   Release Date: {movie?.release_date}
@@ -67,22 +69,39 @@ const Popular = () => {
               )}
 
               <div className="flex items-center gap-4 mt-10">
-                {/* <button className=" flex items-center gap-1.5 bg-[#d90429] text-white rounded-[20px] py-[5px] px-4 border-0 outline-none">
-                  <RiPlayCircleFill
-                    style={{ color: "#fff", fontSize: "2rem" }}
-                  />
-                  <span> Watch</span>
-                </button> */}
-
-                <button className="flex items-center gap-1.5 bg-[#d90429] text-white rounded-[20px] py-[5px] px-4 border-0 outline-none">
+                
+              <button className="flex items-center gap-1.5 bg-[#d90429] text-white rounded-[20px] py-[5px] px-4   outline-none">
                   <MdMovie />
                   {movie.media_type}
+                </button> 
+                <button
+                  className=" flex items-center gap-1.5 bg-transparent text-white rounded-[20px] py-[5px] px-4 border border-[#fff] outline-none"
+                  onClick={() =>
+                    addToWatchList({
+                      id: movie?.id || 0,
+                      name:
+                        movie?.name ||
+                        movie?.title ||
+                        movie?.original_title ||
+                        "",
+                      release_date: movie?.release_date || "",
+                      poster_path: movie?.poster_path || "",
+                      type: "movie",
+                    })
+                  }
+                >
+                  <MdPlaylistAdd style={{ color: "#fff" }} />
+                  <p>watchlist</p>
+            
                 </button>
+
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <ToastContainer position="top-right" />
     </div>
   );
 };

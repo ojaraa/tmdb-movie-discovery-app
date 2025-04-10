@@ -21,13 +21,13 @@ const CollectionDetails = () => {
           })`,
         }}
       >
-        <h2 className=" text-center text-[2.5rem] sm:text-[4.5rem] font-bold">
+        <h2 className=" text-center text-[1.8rem] sm:text-[4.5rem] font-bold">
           {collectionData?.name}
         </h2>
-        <div className="grid items-center gap-4 sm:gap-10 py-[4rem] sm:px-[8rem] px-6 grid-cols-2 sm:grid-cols-4">
+        <div className="grid items-center gap-4 sm:gap-10 py-[4rem] sm:px-[8rem] px-4 grid-cols-2 sm:grid-cols-4">
             {collectionData?.parts?.map((movie) => (
                 <Link to={`/movie/${movie.id}`}>
-                <div className="relative" key={movie.id}>
+                <div className="" key={movie.id}>
                   <div className=" h-[250px] sm:h-[320px] w-full">
                     <img
                       src={
@@ -45,7 +45,7 @@ const CollectionDetails = () => {
                 </div>
 
                 <div className="py-2">
-                    <h4 className="text-[1.2rem] font-semibold text-center gap-x-2 flex items-center justify-center ">
+                    <h4 className="text-sm sm:text-[1.2rem] font-semibold text-center gap-x-2 flex items-center justify-center ">
                       {movie?.original_title || movie?.original_name} 
                       <span>({movie?.release_date.slice(0,4)})</span>
                     </h4>
