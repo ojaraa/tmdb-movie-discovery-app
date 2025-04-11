@@ -6,15 +6,17 @@ import {
   useGetTvGenreDetailsQuery,
 } from "@/services/api/general-api-slice";
 import { API_IMG } from "@/services/models/general.model";
+import { Movie } from "@/services/models/movie.model";
 import { format } from "date-fns";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { Link, useParams } from "react-router-dom";
 
 const GenreDetails = () => {
   const { genre_id, genre_name, mediaType } = useParams();
     const [page, setPage] = useState<number>(1);
+      const [movieList, setMovieList] = useState<Movie[]>([]);
   const { data, isLoading: loadingDetails } = useGetGenreDetailsQuery({
     genre_id: genre_id ?? "",
     page
@@ -25,6 +27,22 @@ const GenreDetails = () => {
   });
   const genreData = mediaType === "Movie" ? data : tvGenreData;
 
+
+  useEffect(() => {
+    if(genreData?.results){
+      if(page === 1) {
+        setMovieList(genreData?.results)
+      }else{
+        setMovieList((prev) => {
+          const existingIds = new Set(prev.map((movie) => movie.id))
+          const uniqueMovies = genreData?.results.filter((movie) => !existingIds.has(movie.id))
+          return [...prev, ...uniqueMovies]
+        })
+      }
+    }
+  }, [genreData?.results , page])
+
+  
   if (loadingDetails || isLoading) {
     return <Loader />;
   }
@@ -43,7 +61,7 @@ const GenreDetails = () => {
         </div>
       ) : (
         <div className="grid items-center gap-4 sm:gap-8 py-6 px-0 sm:px-6 grid-cols-2 sm:grid-cols-5">
-          {genreData?.results?.map((movie) => (
+          {movieList.map((movie) => (
             <Link to={`/${mediaType}/${movie.id}`} key={movie.id}>
               <div className="relative">
                 <div className=" h-[260px] sm:h-[320px] w-full">
