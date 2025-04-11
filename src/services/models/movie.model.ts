@@ -1,15 +1,18 @@
-export type CategoryType = "popular" | "trending" | "top_rated" | "now_playing" |"trending/movie/day";
+export type CategoryType = "popular" | "trending" | "top_rated" | "now_playing" |"airing_today";
 
 export enum movieType {
   popular = "popular",
   trending = "trending",
   topRated = "top_rated",
   nowPlaying = "now_playing",
+  airingToday = "airing_today"
 }
 
 export interface MovieResponse {
   page: number;
   results: Movie[];
+  total_pages: number;
+  total_results: number;
 }
 export interface MovieCollection {
   id: number;

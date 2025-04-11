@@ -33,10 +33,19 @@ const movieListApi = apiSlice.injectEndpoints({
       MovieResponse,
       { categoryType: CategoryType; page: number; mediaType: MediaType }
     >({
-      query: ({ categoryType, page, mediaType }) => ({
-        url: `${mediaType}/${categoryType}?language=en-US&page=${page}`,
-        method: "GET",
-      }),
+      query: ({ categoryType, page, mediaType }) => {
+        if (categoryType === "trending") {
+          return {
+            url: `trending/${mediaType}/day?language=en-US&page=${page}`,
+            method: "GET",
+          };
+        } else{
+          return{
+            url: `${mediaType}/${categoryType}?language=en-US&page=${page}`,
+            method: "GET",
+          };
+        }
+      },
     }),
     getMovieDetails: builder.query<MovieDetails, { movie_id: string }>({
       query: ({ movie_id }) => ({

@@ -137,11 +137,11 @@ const MovieDetails = () => {
         />
 
         <div className="py-4">
-          <div className="grid grid-cols-2 ">
+          <div className="grid gap-x-7 sm:gap-x-4 grid-cols-2 sm:pt-6 sm:grid-cols-[1fr_1.5fr] ">
             <div className="flex">
               {movieDetail?.production_companies && (
                 <div className="flex flex-col gap-y-2">
-                  <h6 className="text-xl sm:text-[1.8rem]   font-bold">
+                  <h6 className="text-xl sm:text-[1.8rem] pb-1.5 font-bold">
                     Production Companies
                   </h6>
                   {movieDetail?.production_companies.map((company) => (
@@ -154,7 +154,7 @@ const MovieDetails = () => {
             <div className="grid gap-y-6">
               {movieDetail?.production_countries && (
                 <div className="flex flex-col gap-y-2">
-                  <h6 className="text-xl sm:text-[1.8rem]  font-bold">
+                  <h6 className="text-xl sm:text-[1.8rem] pb-1.5 font-bold">
                     Production Countries
                   </h6>
                   {movieDetail?.production_countries.map((country) => (
@@ -189,6 +189,7 @@ const MovieDetails = () => {
         transition={Slide}
         closeOnClick={true}
         pauseOnHover
+        hideProgressBar
       />
       
     </div>

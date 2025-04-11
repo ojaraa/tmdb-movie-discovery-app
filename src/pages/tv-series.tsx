@@ -214,6 +214,7 @@ const TvSeriesDetails = () => {
         position="top-right"
         autoClose={1500}
         theme="dark"
+        hideProgressBar
         transition={Slide}
         closeOnClick={true}
         pauseOnHover

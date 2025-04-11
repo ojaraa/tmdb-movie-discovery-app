@@ -7,8 +7,9 @@ import { Link } from "react-router-dom";
 import { MdMovie, MdPlaylistAdd } from "react-icons/md";
 import Loader from "@/components/shared/skeleton-loaders/loader";
 import { addToWatchList } from "@/lib/utils";
-import {  ToastContainer, Zoom } from "react-toastify";
+import { ToastContainer, Zoom } from "react-toastify";
 import { Star } from "lucide-react";
+import { format } from "date-fns";
 
 const Popular = () => {
   const { data: trendingMedia, isLoading } = useFetchAllTrendingMediaQuery();
@@ -34,7 +35,7 @@ const Popular = () => {
         {trendingMedia?.results.map((movie) => (
           <SwiperSlide key={movie.id}>
             <div
-              className="w-full h-full  pl-[2rem]  pt-[12rem] sm:pt-[5rem] sm:pl-12 "
+              className="w-full h-full  pl-[2rem]  pt-[12rem] sm:pt-[9rem] sm:pl-12 "
               style={{
                 background: ` linear-gradient(90deg,rgba(0,0,0,.9) 10%,transparent 90%),linear-gradient(1turn,rgba(0,0,0,.9),transparent 50%),url(${
                   API_IMG + movie.backdrop_path
@@ -46,34 +47,33 @@ const Popular = () => {
               }}
             >
               <div className="flex items-center gap-2">
-               
-                <Star fill="#F3A218" stroke="#F3A218" size={16}/>
+                <Star fill="#F3A218" stroke="#F3A218" size={16} />
                 <p className="text-base font-extrabold">
                   {movie.vote_average.toFixed(1)}
                 </p>
               </div>
 
               <Link to={`${movie.media_type}/${movie?.id}`}>
-                <h1 className="sm:pb-8 text-[2.5rem] sm:text-[3.5rem] mb-2 font-bold">
-                  {movie?.name} {movie?.title}
+                <h1 className="sm:pb-5 text-[2.5rem] sm:text-[3.5rem] font-bold">
+                  {movie?.name || movie?.title} (
+                  {(movie?.release_date || movie?.first_air_date) &&
+                    format(
+                      movie?.release_date || movie?.first_air_date || "",
+                      "yyyy"
+                    )}
+                  )
                 </h1>
               </Link>
 
-              <p className="w-full sm:w-[55%]">
+              <p className="w-full sm:text-lg font-medium sm:w-[55%]">
                 {truncateString(movie?.overview, 180)}
               </p>
-              {movie.release_date && (
-                <p className="mt-8 font-bold ">
-                  Release Date: {movie?.release_date}
-                </p>
-              )}
 
               <div className="flex items-center gap-4 mt-10">
-                
-              <button className="flex items-center gap-1.5 bg-[#d90429] text-white rounded-[20px] py-[5px] px-4   outline-none">
+                <button className="flex items-center gap-1.5 bg-[#d90429] text-white rounded-[20px] py-[5px] px-4   outline-none">
                   <MdMovie />
                   {movie.media_type}
-                </button> 
+                </button>
                 <button
                   className=" flex items-center gap-1.5 bg-transparent text-white rounded-[20px] py-[5px] px-4 border border-[#fff] outline-none"
                   onClick={() =>
@@ -84,7 +84,7 @@ const Popular = () => {
                         movie?.title ||
                         movie?.original_title ||
                         "",
-                      release_date: movie?.release_date || "",
+                      release_date: movie?.release_date || movie?.first_air_date || "",
                       poster_path: movie?.poster_path || "",
                       type: movie?.media_type || "",
                     })
@@ -92,9 +92,7 @@ const Popular = () => {
                 >
                   <MdPlaylistAdd style={{ color: "#fff" }} />
                   <p>watchlist</p>
-            
                 </button>
-
               </div>
             </div>
           </SwiperSlide>

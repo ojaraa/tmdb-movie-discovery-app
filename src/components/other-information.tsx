@@ -35,7 +35,7 @@ const OtherInformation = ({
         Other Information
       </h2>
 
-      <div className="grid  sm:grid-cols-2 items-center order-0">
+      <div className="grid sm:grid-cols-[1fr_1.5fr] items-start order-0">
         <div className="grid gap-y-6">
           {/* {info ? <h6 className="text-xl sm:text-[1.8rem]   font-bold">Social Links</h6> : ""} */}
 
@@ -115,7 +115,7 @@ const OtherInformation = ({
             )}
           </div>
         </div>
-        <div className="flex gap-16 flex-wrap pt-6 sm:pt-0">
+        <div className="grid grid-cols-2 gap-y-8  gap-x-9 sm:flex sm:gap-16 sm:flex-wrap pt-9 sm:pt-0">
           {language?.length > 0 && (
             <div className="flex flex-col gap-y-2">
               <h6 className="text-xl sm:text-[1.8rem]  font-bold">Spoken Languages</h6>
@@ -149,7 +149,7 @@ const OtherInformation = ({
 
           {revenue ? (
             <div className="flex flex-col gap-y-2">
-              <h6 className="text-[1.6rem]  font-bold">Revenue</h6>
+              <h6 className="text-xl sm:text-[1.8rem] font-bold">Revenue</h6>
               <p className="text-lg sm:text-[1.3rem] font-light">
                 ${formattedNumber(revenue)}
               </p>
