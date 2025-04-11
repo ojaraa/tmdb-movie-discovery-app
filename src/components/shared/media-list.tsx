@@ -179,19 +179,9 @@ const MediaList = ({ pageTitle, mediaType }: MediaListProps) => {
         )}
       </div>
 
-      {/* {movieData?.results && movieData?.results.length > 0 && (
-        <div className="flex items-center justify-center pt-8 ">
-          <Button
-            onClick={loadMoreData}
-            className="!rounded-3xl !px-6 !py-6"
-            disabled={isFetching}
-          >
-            Load More
-          </Button>
-        </div>
-      )} */}
+    
 
-      <div className="flex items-center justify-between px-6 pt-24 sm:px-10 pb-10">
+      <div className="flex items-center flex-col gap-y-5 sm:flex-row justify-between px-6 pt-24 sm:px-10 pb-10  ">
         <div>
           <p className="text-sm font-semibold text-[#667185]">
             Page {movieData?.page} of {movieData?.total_pages}
@@ -219,7 +209,7 @@ const MediaList = ({ pageTitle, mediaType }: MediaListProps) => {
               onClick={() => setPage((prev) => prev - 1)}
               disabled={(movieData?.page || 1) <= 1}
               variant="outline"
-              className="!text-deep-grey !w-[108px]  border border-table-border hover:border-table-border/75"
+              className="!text-deep-grey !w-[108px] rounded-[17px]  border border-table-border hover:border-table-border/75"
             >
               <ArrowLeft />
               Previous
@@ -227,7 +217,8 @@ const MediaList = ({ pageTitle, mediaType }: MediaListProps) => {
             <Button
               onClick={() => setPage((prev) => prev + 1)}
               // disabled={tickets?.hasNext === false}
-              className="!text-deep-grey !w-[108px]  border border-table-border hover:border-table-border/75"
+              disabled={page === movieData?.total_pages}
+              className="!text-deep-grey !w-[108px]  border rounded-[17px]   border-table-border hover:border-table-border/75"
               variant="outline"
             >
               Next

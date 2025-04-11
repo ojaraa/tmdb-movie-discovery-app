@@ -35,15 +35,15 @@ const generalApiSlice = apiSlice.injectEndpoints({
         method: "GET"
       }) 
     }),
-    getGenreDetails: builder.query<MovieResponse, {genre_id: string;}>({
-      query: ({genre_id}) => ({
-        url:`/discover/movie?language=en-US&sort_by=popularity.desc&with_genres=${genre_id}&with_watch_monetization_types=flatrate&include_adult=false`,
+    getGenreDetails: builder.query<MovieResponse, {genre_id: string; page:number;}>({
+      query: ({genre_id, page}) => ({
+        url:`/discover/movie?language=en-US&sort_by=popularity.desc&with_genres=${genre_id}&with_watch_monetization_types=flatrate&include_adult=false&page=${page}`,
         method: 'GET'
       })
     }),
-    getTvGenreDetails: builder.query<MovieResponse, {genre_id: string;}>({
-      query: ({genre_id}) => ({
-        url:`/discover/tv?language=en-US&sort_by=popularity.desc&with_genres=${genre_id}&with_watch_monetization_types=flatrate&include_adult=false`,
+    getTvGenreDetails: builder.query<MovieResponse, {genre_id: string; page: number;}>({
+      query: ({genre_id, page}) => ({
+        url:`/discover/tv?language=en-US&sort_by=popularity.desc&with_genres=${genre_id}&with_watch_monetization_types=flatrate&include_adult=false&page=${page}`,
         method: 'GET'
       })
     }),

@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 const AppSidebar = () => {
   return (
-    <Sidebar className=" pl-8  ">
+    <Sidebar className=" !pl-10  ">
       <SidebarHeader className=" pt-10">
         <div className="text-center">
           <Link to={`/`} className="flex items-center justify-center gap-2">
@@ -27,16 +27,17 @@ const AppSidebar = () => {
           </Link>
         </div>
       </SidebarHeader>
+      {/* <Trash size={36} /> */}
 
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                <SidebarMenuItem key={item.title} >
+                  <SidebarMenuButton asChild className="text-[1.05rem]">
                     <Link to={item.url}>
-                      <item.icon />
+                      <item.icon size={60} />
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
@@ -46,8 +47,8 @@ const AppSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarGroup>
-          <SidebarGroupLabel>For You</SidebarGroupLabel>
+        <SidebarGroup >
+          <SidebarGroupLabel className="mb-2 text-[1.05rem] font-bold">For You</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {item2.map((item) => (
@@ -100,13 +101,9 @@ const items = [
 
 const item2= [
   {
-    title: "My List",
+    title: "My WatchList",
     url: "favourites",
     icon: Star,
   },
-  {
-    title: "Favourites",
-    url: "favourites",
-    icon: VideoIcon,
-  }
+ 
 ]
