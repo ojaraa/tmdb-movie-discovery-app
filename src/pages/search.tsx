@@ -65,7 +65,7 @@ const Search = () => {
         {/* <Button className="py-6 rounded-full">Search</Button> */}
       </div>
 
-      <div className="grid items-center gap-8 py-6 grid-cols-2 sm:grid-cols-4 ">
+      <div className="grid items-center gap-6 py-6 grid-cols-2 sm:grid-cols-4 px-6 ">
         {isLoading ? (
           <Loader/>
         ) : (
@@ -75,7 +75,7 @@ const Search = () => {
             return (
               <Link to={`/${mediaType}/${movie.id}`} key={movie.id}>
                 <div className="relative">
-                  <div className="h-[320px] w-full">
+                  <div className="h-[270px] w-full">
 
                     {(mediaType === "person") && (
                       <img
