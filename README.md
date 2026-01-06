@@ -1,51 +1,34 @@
-# React + TypeScript + Vite
+# TMDB Movie Discovery App 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive movie discovery web application built using **The Movie Database (TMDB) API**.  
+Users can explore trending movies, view detailed movie information, and browse cast details in an intuitive interface.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** https://tmdb-movie-discovery.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Browse trending and popular movies
+- View detailed movie information (overview, release date, rating, etc.)
+- Explore cast and crew details
+- Responsive design for desktop and mobile
+- Clean and user-friendly UI
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🛠️ Tech Stack
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Frontend:** React, TypeScript, Shadcn
+- **API:** The Movie Database (TMDB) API  
+- **Deployment:** Netlify
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+---
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# tmdb-movie-discovery-app
+## 📸 Screenshots
+
+_(Optional: Add screenshots here to improve visual appeal)_
+
+```md
+![Home Page](./screenshots/home.png)
+![Movie Details](./screenshots/details.png)
