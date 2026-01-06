@@ -27,8 +27,6 @@ Users can explore trending movies, view detailed movie information, and browse c
 
 ## 📸 Screenshots
 
-_(Optional: Add screenshots here to improve visual appeal)_
 
-```md
-![Home Page](./screenshots/home.png)
-![Movie Details](./screenshots/details.png)
+![Home Page](home.jpg)
+
