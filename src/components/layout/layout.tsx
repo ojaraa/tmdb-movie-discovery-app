@@ -34,7 +34,6 @@ const Layout = () => {
           <SidebarTrigger className="absolute left-5 top-5 " />
           <div className="">
             <Outlet />
-           
           </div>
           <Footer/>
         </main>

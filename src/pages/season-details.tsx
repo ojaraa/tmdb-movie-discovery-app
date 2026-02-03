@@ -3,13 +3,13 @@ import {
   useGetSeasonDetailsQuery,
   useGetSeriesDetailsQuery,
 } from "@/services/api/tv-api-slice";
-import male from "/assets/male.png";
-import female from "/assets/female.png";
-import { API_IMG, API_IMG_500 } from "@/services/models/general.model";
+// import male from "/assets/male.png";
+// import female from "/assets/female.png";
+import { API_IMG } from "@/services/models/general.model";
 import { format } from "date-fns";
-import { Link, useParams } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import {  useParams } from "react-router-dom";
+// import { Button } from "@/components/ui/button";
+// import { useState } from "react";
 import Loader from "@/components/shared/skeleton-loaders/loader";
 
 const SeasonDetails = () => {
@@ -21,10 +21,10 @@ const SeasonDetails = () => {
     season_id: season_id as string,
     series_id: series_id as string,
   });
-  const [movieCount, setMovieCount] = useState(4);
-  const loadMore = () => {
-    setMovieCount((prev) => prev + 4);
-  };
+  // const [movieCount, setMovieCount] = useState(4);
+  // const loadMore = () => {
+  //   setMovieCount((prev) => prev + 4);
+  // };
 
   if (loadingSeasonDetail || loadingEpisodeDetail) {
     return<Loader/>
@@ -91,7 +91,7 @@ const SeasonDetails = () => {
                 </p>
               </div>
             </div>
-            {episode?.guest_stars && episode?.guest_stars.length > 0 && (
+            {/* {episode?.guest_stars && episode?.guest_stars.length > 0 && (
               <div className="grid py-8 gap-y-5">
                 <p className="text-[1.3rem] font-bold">
                   Guest stars ({episode?.guest_stars?.length})
@@ -104,7 +104,7 @@ const SeasonDetails = () => {
                     return (
                       <Link to={`/person/${guest?.id}`}>
                         <div className=" grid grid-cols-[1fr_2.5fr] cursor-pointer gap-6 bg-[#171717] shadow-xl shadow-black rounded-[15px]">
-                          <div className="h-[150px] rounded-[9px] ">
+                          <div className="h-[100px] rounded-[9px] ">
                             <img
                               src={
                                 guest?.profile_path
@@ -148,7 +148,7 @@ const SeasonDetails = () => {
                   </div>
                 )}
               </div>
-            )}
+            )} */}
           </div>
         ))}
       </div>
